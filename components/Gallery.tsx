@@ -26,7 +26,12 @@ export default function Gallery() {
 
         <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-5 sm:auto-rows-[220px]">
           {images.map((img, i) => (
-            <Reveal key={i} delay={i * 0.05} className={`${img.span}`}>
+            <Reveal
+              key={i}
+              delay={i * 0.05}
+              direction={i % 2 === 0 ? "left" : "right"}
+              className={`${img.span}`}
+            >
               <ImagePlaceholder
                 label={img.label}
                 tone={img.tone}

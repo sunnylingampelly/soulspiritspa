@@ -43,7 +43,7 @@ export default function PromoPopup() {
     e.preventDefault();
     const digits = phone.replace(/\D/g, "");
     if (!name.trim() || digits.length !== 10) return;
-    const message = `Hi SoulSpirit Spa, I'm ${name.trim()} (+91 ${digits}). I'd like to claim the up to 30% off offer.`;
+    const message = `Hi SoulSpirit Spa, I'm ${name.trim()} (+91 ${digits}). I'd like to claim the 15% off offer.`;
     window.open(buildWhatsAppLink(message), "_blank", "noopener,noreferrer");
     setOpen(false);
   }
@@ -52,20 +52,20 @@ export default function PromoPopup() {
     <AnimatePresence>
       {open && (
         <div className="fixed inset-0 z-[70] flex items-end justify-center sm:items-center sm:p-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+          {/* Plain div, not motion — it needs no entrance animation of its
+              own, and opacity-only animations that never get to finish
+              (a throttled tab, slow device) leave things invisible. */}
+          <div
             className="absolute inset-0 bg-ink/60 backdrop-blur-sm"
             onClick={() => setOpen(false)}
             aria-hidden
           />
 
           <motion.div
-            initial={{ y: "100%", opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: "100%", opacity: 0 }}
+            // Position only, never opacity — see note above.
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "100%" }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             role="dialog"
             aria-modal="true"
@@ -110,7 +110,7 @@ export default function PromoPopup() {
             <div className="relative z-10 mt-auto p-5 text-ivory sm:mt-0 sm:p-7 sm:text-ink">
               <p className="eyebrow text-champagne sm:text-bronze">Limited Time Offer</p>
               <h3 className="mt-2 font-serif text-2xl text-balance text-ivory sm:text-ink">
-                Enjoy up to 30% off
+                Enjoy 15% off
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-ivory/80 sm:text-ink/60">
                 Share your details and we&rsquo;ll confirm your discount on

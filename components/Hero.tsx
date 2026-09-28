@@ -1,37 +1,45 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import ImagePlaceholder from "./ImagePlaceholder";
+import Parallax from "./Parallax";
 import { CallButton, WhatsAppButton } from "./CTAButtons";
 import { siteImages } from "@/lib/images";
 
+// The mobile hero video is commented out (not deleted) below, at the
+// client's request — a still image is used instead for now. To bring the
+// video back: restore the `useRef`/`useEffect` block and the <video> JSX,
+// and remove the ImagePlaceholder that replaced it.
+//
+// const videoRef = useRef<HTMLVideoElement>(null);
+// useEffect(() => {
+//   const video = videoRef.current;
+//   if (!video) return;
+//   video.muted = true;
+//   const playPromise = video.play();
+//   if (playPromise) playPromise.catch(() => {});
+// }, []);
+
 export default function Hero() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  // Some mobile browsers (in-app webviews especially) ignore the
-  // declarative autoplay attributes and need play() called explicitly
-  // once the element exists — muted is also set imperatively since a
-  // couple of older WebViews don't honour it as a plain attribute.
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    video.muted = true;
-    const playPromise = video.play();
-    if (playPromise) playPromise.catch(() => {});
-  }, []);
-
   return (
     <section className="relative flex h-[100svh] min-h-[640px] w-full items-end overflow-hidden bg-charcoal">
       <div className="absolute inset-0">
-        {/* Mobile only: a short looping clip shot for portrait screens. */}
+        {/* Mobile only: a still image (the looping video is commented out
+            above/below, not deleted, in case it comes back later). */}
+        <ImagePlaceholder
+          label="Two therapists greeting guests with a wai"
+          tone="charcoal"
+          src={siteImages.mobileHeroGreeting}
+          priority
+          className="absolute inset-0 h-full w-full sm:hidden"
+        />
+        {/*
         <video
           ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
-          // eslint-disable-next-line react/no-unknown-property
           webkit-playsinline="true"
           disablePictureInPicture
           preload="auto"
@@ -40,15 +48,19 @@ export default function Hero() {
         >
           <source src="/soul-video.mp4" type="video/mp4" />
         </video>
+        */}
 
-        {/* Tablet/desktop: still image. */}
-        <ImagePlaceholder
-          label="A private treatment suite at SoulSpirit, warm light and still water"
-          tone="charcoal"
-          src={siteImages.heroDesktop}
-          priority
-          className="hidden h-full w-full sm:block"
-        />
+        {/* Tablet/desktop: still image, with a slow parallax drift as the
+            hero scrolls past — desktop only, video stays static on mobile. */}
+        <Parallax className="hidden sm:block" strength={50}>
+          <ImagePlaceholder
+            label="A private treatment suite at SoulSpirit, warm light and still water"
+            tone="charcoal"
+            src={siteImages.heroDesktop}
+            priority
+            className="h-full w-full"
+          />
+        </Parallax>
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/25 to-charcoal/10" />
         {/* Flat black layer over the web/desktop hero photo — it's bright
             enough throughout (not just top-to-bottom) that the gradient
@@ -76,7 +88,7 @@ export default function Hero() {
           className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-champagne/40 bg-charcoal/40 px-4 py-1.5 text-[11px] uppercase tracking-widest2 text-champagne backdrop-blur-sm"
         >
           <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-bronze-light" />
-          Upto 15% Off
+          15% Off
         </motion.div>
 
         <motion.p

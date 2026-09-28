@@ -40,7 +40,12 @@ export default function ExperiencePrinciples() {
 
         <div className="mt-16 grid grid-cols-1 divide-y divide-line/70 sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x">
           {principles.map((p, i) => (
-            <Reveal key={p.n} delay={0.1 + i * 0.06} className="group px-4 py-8 lg:px-8">
+            <Reveal
+              key={p.n}
+              delay={0.1 + i * 0.06}
+              direction={i % 2 === 0 ? "left" : "right"}
+              className="group px-4 py-8 lg:px-8"
+            >
               <span className="font-serif text-3xl text-bronze/50 transition-colors duration-600 group-hover:text-bronze">
                 {p.n}
               </span>

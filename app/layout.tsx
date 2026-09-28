@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import FloatingContact from "@/components/FloatingContact";
 import MobileActionBar from "@/components/MobileActionBar";
 import PromoPopup from "@/components/PromoPopup";
+import CallBot from "@/components/CallBot";
 import { siteConfig, openingHoursSpecification } from "@/lib/site-config";
 
 const heading = Fraunces({
@@ -135,6 +136,7 @@ export default function RootLayout({
         <Footer />
         <FloatingContact />
         <MobileActionBar />
+        <CallBot />
         <PromoPopup />
       </body>
     </html>

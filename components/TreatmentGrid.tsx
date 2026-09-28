@@ -69,7 +69,7 @@ export default function TreatmentGrid({
         {filtered.map((t, i) => {
           const globalIndex = allTreatments.findIndex((x) => x.slug === t.slug);
           return (
-            <Reveal key={t.slug} delay={(i % 6) * 0.05}>
+            <Reveal key={t.slug} delay={(i % 6) * 0.05} direction={i % 2 === 0 ? "left" : "right"}>
               <article className="group flex h-full flex-col border border-line bg-ivory">
                 <Link href={`/treatments/${t.slug}`} className="relative block overflow-hidden">
                   <ImagePlaceholder

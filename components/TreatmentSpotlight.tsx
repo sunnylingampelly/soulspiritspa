@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Reveal from "./Reveal";
 import ImagePlaceholder from "./ImagePlaceholder";
+import Parallax from "./Parallax";
 import { CallButton, WhatsAppButton } from "./CTAButtons";
 import { getTreatmentBySlug, formatDurations } from "@/lib/treatments-data";
 import { treatmentImageForSlug } from "@/lib/images";
@@ -13,12 +14,16 @@ export default function TreatmentSpotlight() {
     <section className="bg-ink text-ivory">
       <div className="container-luxe grid grid-cols-1 items-center gap-0 lg:grid-cols-2">
         <Reveal>
-          <ImagePlaceholder
-            label={`${treatment.name} — two therapists working in synchrony`}
-            tone="charcoal"
-            src={treatmentImageForSlug(treatment.slug)}
-            className="aspect-[4/5] w-full lg:aspect-square"
-          />
+          <div className="relative aspect-[4/5] w-full overflow-hidden lg:aspect-square">
+            <Parallax strength={30}>
+              <ImagePlaceholder
+                label={`${treatment.name} — two therapists working in synchrony`}
+                tone="charcoal"
+                src={treatmentImageForSlug(treatment.slug)}
+                className="h-full w-full"
+              />
+            </Parallax>
+          </div>
         </Reveal>
         <div className="py-14 lg:pl-16 lg:py-0">
           <Reveal delay={0.05}>

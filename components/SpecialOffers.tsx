@@ -67,7 +67,7 @@ export default function SpecialOffers() {
 
         <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {offers.map((o, i) => (
-            <Reveal key={o.n} delay={i * 0.08}>
+            <Reveal key={o.n} delay={i * 0.08} direction={i % 2 === 0 ? "left" : "right"}>
               <article className="flex h-full flex-col border border-line bg-ivory p-8">
                 <span className="font-serif text-2xl text-bronze/60">{o.n}</span>
                 <p className="mt-4 eyebrow text-ink/40">{o.tag}</p>
@@ -81,13 +81,13 @@ export default function SpecialOffers() {
                     </li>
                   ))}
                 </ul>
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                  <CallButton size="sm" className="w-full justify-center sm:flex-1" />
+                <div className="mt-6 flex flex-col gap-3">
+                  <CallButton size="sm" className="w-full justify-center" />
                   <WhatsAppButton
                     size="sm"
                     label="WhatsApp"
                     message={`Hi SoulSpirit Spa, I would like to know more about the ${o.title}.`}
-                    className="w-full justify-center sm:flex-1"
+                    className="w-full justify-center"
                   />
                 </div>
               </article>

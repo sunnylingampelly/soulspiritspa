@@ -24,6 +24,10 @@ export const siteImages = {
   // "welcome" section.
   welcomeGreeting: "/welcome.webp",
 
+  // Two therapists greeting guests with a wai, portrait crop — the
+  // mobile hero background (replacing the looping video).
+  mobileHeroGreeting: "/mobile-hero-greeting.webp",
+
   footReflexology: "/gallery/gallery-01.png",
   ritualFlatlay: "/gallery/gallery-02.png",
   footMassageTherapist: "/gallery/gallery-03.png",

@@ -58,7 +58,7 @@ export default function MembershipSection() {
 
         <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-3">
           {plans.map((p, i) => (
-            <Reveal key={p.name} delay={i * 0.08}>
+            <Reveal key={p.name} delay={i * 0.08} direction={i % 2 === 0 ? "left" : "right"}>
               <div
                 className={`flex h-full flex-col border p-8 ${
                   p.featured

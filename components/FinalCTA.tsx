@@ -1,5 +1,6 @@
 import Reveal from "./Reveal";
 import ImagePlaceholder from "./ImagePlaceholder";
+import Parallax from "./Parallax";
 import { CallButton, WhatsAppButton } from "./CTAButtons";
 import { siteImages } from "@/lib/images";
 
@@ -7,12 +8,14 @@ export default function FinalCTA() {
   return (
     <section className="relative overflow-hidden bg-ink text-center text-ivory">
       <div className="absolute inset-0">
-        <ImagePlaceholder
-          label="Candlelight, warm and still"
-          tone="charcoal"
-          src={siteImages.facialCandle}
-          className="h-full w-full"
-        />
+        <Parallax strength={40}>
+          <ImagePlaceholder
+            label="Candlelight, warm and still"
+            tone="charcoal"
+            src={siteImages.facialCandle}
+            className="h-full w-full"
+          />
+        </Parallax>
         <div className="absolute inset-0 bg-ink/80" />
       </div>
 

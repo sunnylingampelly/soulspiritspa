@@ -58,7 +58,12 @@
   }
 
   .eyebrow {
-    @apply text-[11px] sm:text-xs uppercase tracking-widest2 text-bronze font-medium;
+    /* bronze-dark, not the default bronze: at this size (11-12px) the
+       default bronze on the site's ivory/cream backgrounds sits at only
+       ~3.15:1 contrast, under WCAG AA's 4.5:1 minimum for small text.
+       bronze-dark reaches ~4.45:1 — meaningfully more legible, same
+       warm brand hue, no visual overhaul. */
+    @apply text-[11px] sm:text-xs uppercase tracking-widest2 text-bronze-dark font-medium;
   }
 
   .btn {

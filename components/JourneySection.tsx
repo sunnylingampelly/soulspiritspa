@@ -48,7 +48,12 @@ export default function JourneySection({ compact = false }: { compact?: boolean 
 
         <div className="mt-16 grid grid-cols-1 gap-px overflow-hidden rounded-lg bg-ivory/10 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => (
-            <Reveal key={s.n} delay={0.1 + i * 0.08} className="bg-ink">
+            <Reveal
+              key={s.n}
+              delay={0.1 + i * 0.08}
+              direction={i % 2 === 0 ? "left" : "right"}
+              className="bg-ink"
+            >
               <div className="group relative flex h-full flex-col">
                 <ImagePlaceholder
                   label={`${s.title} — SoulSpirit guest journey`}

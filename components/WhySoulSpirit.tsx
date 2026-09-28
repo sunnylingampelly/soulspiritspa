@@ -53,7 +53,7 @@ export default function WhySoulSpirit() {
 
         <div className="mt-14 grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
           {reasons.map((r, i) => (
-            <Reveal key={r.n} delay={(i % 3) * 0.06}>
+            <Reveal key={r.n} delay={(i % 3) * 0.06} direction={i % 2 === 0 ? "left" : "right"}>
               <span className="font-serif text-2xl text-bronze/50">{r.n}</span>
               <h3 className="mt-3 font-serif text-xl">{r.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-ink/60">{r.text}</p>
