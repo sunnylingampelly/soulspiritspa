@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Fraunces, Manrope } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
+import OfferBanner from "@/components/OfferBanner";
 import Footer from "@/components/Footer";
 import FloatingContact from "@/components/FloatingContact";
 import MobileActionBar from "@/components/MobileActionBar";
@@ -131,6 +132,7 @@ export default function RootLayout({
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <OfferBanner />
         <Nav />
         <main>{children}</main>
         <Footer />

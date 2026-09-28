@@ -37,7 +37,7 @@ export default function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top)] transition-all duration-600 ease-luxe ${
+      className={`fixed inset-x-0 top-8 z-50 pt-[env(safe-area-inset-top)] transition-all duration-600 ease-luxe sm:top-9 ${
         scrolled || open
           ? "bg-ivory/90 backdrop-blur-md shadow-subtle"
           : light

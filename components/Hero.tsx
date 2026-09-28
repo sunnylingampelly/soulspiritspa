@@ -70,10 +70,10 @@ export default function Hero() {
             gradient above, so the floating nav stays legible no matter how
             bright the top of whichever hero image/video is in place. */}
         <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-charcoal/55 to-transparent sm:h-48" />
-        {/* Extra even wash on mobile — a moving video can't guarantee the
-            same contrast a graded still photo can, so give the CTAs a
-            reliable floor regardless of the current frame. */}
-        <div className="absolute inset-0 bg-charcoal/20 sm:hidden" />
+        {/* Stronger, bottom-weighted wash on mobile — the greeting photo is
+            bright and busy (two faces, patterned wall art) right where the
+            headline sits, so it needs more contrast than a flat tint gives. */}
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/95 via-charcoal/70 to-charcoal/20 sm:hidden" />
       </div>
 
       <div className="container-luxe relative z-10 pb-20 pt-40 text-center sm:pb-28 sm:text-left">

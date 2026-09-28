@@ -16,10 +16,13 @@ export default function PromoPopup() {
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (sessionStorage.getItem(SESSION_KEY)) return;
+    // Deliberately well after the chat bot's own 3s nudge (CallBot.tsx) —
+    // both auto-opening close together would mean interrupting a guest
+    // who's mid-conversation with the bot with a second, unrelated popup.
     const timer = setTimeout(() => {
       setOpen(true);
       sessionStorage.setItem(SESSION_KEY, "1");
-    }, 5000);
+    }, 15000);
     return () => clearTimeout(timer);
   }, []);
 

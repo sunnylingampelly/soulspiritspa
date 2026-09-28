@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Seamless CSS marquee for OfferBanner — pure CSS, runs on the compositor,
+   so it isn't tied to React/JS timing at all. The track holds the message
+   twice back-to-back; translating exactly -50% moves one full copy out of
+   view as the other takes its place, with no visible seam or reset jump. */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @layer base {
   * {
     @apply border-line;
