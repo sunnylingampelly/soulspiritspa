@@ -15,6 +15,14 @@
   }
 }
 
+/* A light trail that revolves around the chat launcher — a conic-gradient
+   ring, rotated continuously. Pure CSS transform, compositor-driven. */
+@keyframes revolve-glow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @layer base {
   * {
     @apply border-line;
@@ -29,7 +37,7 @@
   }
 
   body {
-    @apply bg-ivory text-ink antialiased;
+    @apply bg-ivory text-ink antialiased font-medium;
     font-feature-settings: "ss01" 1, "case" 1;
     overflow-x: hidden;
     width: 100%;
@@ -80,7 +88,7 @@
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap px-8 py-4 text-[11px] sm:text-xs uppercase tracking-widest2 font-medium transition-all duration-300 ease-luxe active:scale-[0.97];
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap px-8 py-5 text-sm uppercase tracking-widest2 font-semibold transition-all duration-300 ease-luxe active:scale-[0.97] sm:py-4 sm:text-xs;
   }
 
   .btn-primary {

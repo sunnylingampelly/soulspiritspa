@@ -56,7 +56,7 @@ const whatsappToneClass: Record<Tone, string> = {
 
 const sizeClass = {
   default: "",
-  sm: "!px-4 !py-2.5 !text-[10px]",
+  sm: "!px-4 !py-3.5 !text-xs sm:!py-2.5 sm:!text-[10px]",
 } as const;
 
 // The number is shown on every Call button, not just the label text, per

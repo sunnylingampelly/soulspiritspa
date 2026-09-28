@@ -77,26 +77,34 @@ export default function CallBot() {
       <div className="fixed bottom-[calc(76px+env(safe-area-inset-bottom))] right-5 z-40 sm:bottom-[150px] sm:right-8">
         <AnimatePresence mode="wait">
           {!open ? (
-            <motion.button
+            <motion.div
               key="launcher"
-              type="button"
-              onClick={() => setOpen(true)}
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.9 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              aria-label="Chat with SoulSpirit Spa"
-              className="tap-target relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border-2 border-champagne/70 bg-ink shadow-soft transition-transform hover:scale-105"
+              className="relative h-14 w-14"
             >
-              {/* A soft, continuous pulse ring — pure CSS, so it keeps
-                  running regardless of any JS/animation-completion quirk. */}
-              <span className="absolute inset-0 animate-ping rounded-full bg-bronze/50" />
-              <img
-                src="/brand-mark.png"
-                alt=""
-                className="relative h-full w-full object-cover p-2"
+              {/* A light trail revolving around the launcher — pure CSS
+                  transform on a conic gradient, runs on the compositor. */}
+              <span
+                className="absolute -inset-1.5 rounded-full"
+                style={{
+                  background:
+                    "conic-gradient(from 0deg, transparent 0%, #D8C4A0 12%, transparent 28%, transparent 100%)",
+                  animation: "revolve-glow 2.5s linear infinite",
+                }}
+                aria-hidden
               />
-            </motion.button>
+              <button
+                type="button"
+                onClick={() => setOpen(true)}
+                aria-label="Chat with SoulSpirit Spa"
+                className="tap-target relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border-2 border-ink bg-ink shadow-soft transition-transform hover:scale-105"
+              >
+                <img src="/brand-mark.png" alt="" className="h-full w-full object-cover p-2" />
+              </button>
+            </motion.div>
           ) : (
             <motion.div
               key="panel"
@@ -139,7 +147,7 @@ export default function CallBot() {
                     messages, the typing dots, and the reply all line up
                     on exactly the same left edge. */}
                 <div className="flex items-start gap-2">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-sand">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-ink">
                     <img src="/brand-mark.png" alt="" className="h-full w-full object-cover p-1" />
                   </span>
                   <p className="max-w-[85%] rounded-2xl rounded-tl-sm bg-sand px-3 py-2 text-sm leading-relaxed text-ink">
@@ -184,7 +192,7 @@ export default function CallBot() {
                 {choice && showReply && (
                   <>
                     <div className="mt-3 flex items-start gap-2">
-                      <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-sand">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-ink">
                         <img src="/brand-mark.png" alt="" className="h-full w-full object-cover p-1" />
                       </span>
                       <p className="max-w-[85%] rounded-2xl rounded-tl-sm bg-sand px-3 py-2 text-sm leading-relaxed text-ink">
@@ -212,7 +220,7 @@ export default function CallBot() {
                         className="btn-outline w-full justify-center !py-2.5 text-[11px]"
                       >
                         <WhatsAppIcon className="h-3.5 w-3.5" />
-                        Chat on WhatsApp instead
+                        Chat on WhatsApp
                       </a>
                       <button
                         type="button"
