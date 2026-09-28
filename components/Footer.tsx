@@ -98,7 +98,20 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col-reverse items-center justify-between gap-4 pt-8 text-xs text-ivory/40 sm:flex-row">
-          <p>© 2026 SoulSpirit Spa. All Rights Reserved.</p>
+          <div className="flex flex-col items-center gap-2 sm:items-start">
+            <p>© 2026 SoulSpirit Spa. All Rights Reserved.</p>
+            <p>
+              Website and Ads by{" "}
+              <a
+                href="https://vashynova.tech/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-ivory/70 underline underline-offset-2"
+              >
+                Sunny
+              </a>
+            </p>
+          </div>
           <div className="flex gap-6">
             <Link href="/privacy-policy" className="hover:text-ivory/70">
               Privacy Policy
