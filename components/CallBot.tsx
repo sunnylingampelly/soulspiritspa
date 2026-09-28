@@ -72,8 +72,9 @@ export default function CallBot() {
 
   return (
     <>
-      {/* The launcher — always present, bottom-right, on every page. */}
-      <div className="fixed bottom-[calc(96px+env(safe-area-inset-bottom))] right-5 z-40 sm:bottom-40 sm:right-8">
+      {/* The launcher — always present, bottom-right, on every page, sitting
+          just above the mobile action bar / desktop floating buttons. */}
+      <div className="fixed bottom-[calc(76px+env(safe-area-inset-bottom))] right-5 z-40 sm:bottom-[150px] sm:right-8">
         <AnimatePresence mode="wait">
           {!open ? (
             <motion.button
@@ -85,14 +86,16 @@ export default function CallBot() {
               exit={{ scale: 0.9 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               aria-label="Chat with SoulSpirit Spa"
-              className="tap-target relative flex h-14 w-14 items-center justify-center rounded-full bg-bronze text-ivory shadow-soft transition-transform hover:scale-105"
+              className="tap-target relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border-2 border-champagne/70 bg-ink shadow-soft transition-transform hover:scale-105"
             >
               {/* A soft, continuous pulse ring — pure CSS, so it keeps
                   running regardless of any JS/animation-completion quirk. */}
-              <span className="absolute inset-0 animate-ping rounded-full bg-bronze/60" />
-              <svg viewBox="0 0 24 24" className="relative h-6 w-6" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.03 2 11c0 2.42 1.08 4.62 2.86 6.24-.14 1.1-.5 2.4-1.14 3.5-.14.24.06.54.34.5 1.7-.24 3.24-.94 4.3-1.6C9.48 19.9 10.7 20 12 20c5.52 0 10-4.03 10-9s-4.48-9-10-9Z" />
-              </svg>
+              <span className="absolute inset-0 animate-ping rounded-full bg-bronze/50" />
+              <img
+                src="/brand-mark.png"
+                alt=""
+                className="relative h-full w-full object-cover p-2"
+              />
             </motion.button>
           ) : (
             <motion.div
@@ -105,15 +108,15 @@ export default function CallBot() {
               aria-label="Chat with SoulSpirit Spa"
               className="w-[calc(100vw-2.5rem)] max-w-[300px] overflow-hidden rounded-2xl border border-line bg-ivory shadow-soft sm:w-[300px]"
             >
-              <div className="flex items-center justify-between bg-ink px-4 py-3">
-                <div className="flex items-center gap-2.5">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-bronze font-serif text-sm text-ivory">
-                    S
+              <div className="flex items-center justify-between gap-3 bg-ink px-4 py-3">
+                <div className="flex min-w-0 items-center gap-2.5">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-ivory/10">
+                    <img src="/brand-mark.png" alt="" className="h-full w-full object-cover p-1" />
                   </span>
-                  <div>
-                    <p className="text-sm font-medium text-ivory">SoulSpirit Spa</p>
-                    <p className="flex items-center gap-1 text-[11px] text-ivory/60">
-                      <span className="h-1.5 w-1.5 rounded-full bg-green-400" />
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-medium text-ivory">SoulSpirit Spa</p>
+                    <p className="flex items-center gap-1.5 text-[11px] text-ivory/60">
+                      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-green-400" />
                       Typically replies instantly
                     </p>
                   </div>
@@ -131,24 +134,28 @@ export default function CallBot() {
               </div>
 
               <div className="max-h-[60svh] overflow-y-auto p-4">
+                {/* Every row below shares the same grid: a fixed 32px
+                    avatar column, an 8px gap, then content — so bot
+                    messages, the typing dots, and the reply all line up
+                    on exactly the same left edge. */}
                 <div className="flex items-start gap-2">
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sand font-serif text-xs text-ink/70">
-                    S
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-sand">
+                    <img src="/brand-mark.png" alt="" className="h-full w-full object-cover p-1" />
                   </span>
-                  <p className="rounded-2xl rounded-tl-sm bg-sand px-3 py-2 text-sm leading-relaxed text-ink">
+                  <p className="max-w-[85%] rounded-2xl rounded-tl-sm bg-sand px-3 py-2 text-sm leading-relaxed text-ink">
                     Hi 👋 Ready to relax? Tell me what you&rsquo;re after and
                     I&rsquo;ll point you the right way.
                   </p>
                 </div>
 
                 {!choice && (
-                  <div className="mt-3 flex flex-col gap-2 pl-9">
+                  <div className="mt-3 flex flex-col gap-2 pl-10">
                     {CHOICES.map((c) => (
                       <button
                         key={c.label}
                         type="button"
                         onClick={() => selectChoice(c)}
-                        className="rounded-full border border-bronze/40 px-3 py-2 text-left text-xs text-bronze-dark transition-colors hover:bg-bronze/10"
+                        className="w-full rounded-xl border border-bronze/40 px-3 py-2.5 text-left text-xs text-bronze-dark transition-colors hover:bg-bronze/10"
                       >
                         {c.label}
                       </button>
@@ -157,16 +164,16 @@ export default function CallBot() {
                 )}
 
                 {choice && (
-                  <div className="mt-3 flex items-start justify-end gap-2">
-                    <p className="rounded-2xl rounded-tr-sm bg-ink px-3 py-2 text-sm text-ivory">
+                  <div className="mt-3 flex justify-end">
+                    <p className="max-w-[85%] rounded-2xl rounded-tr-sm bg-ink px-3 py-2 text-sm text-ivory">
                       {choice.label}
                     </p>
                   </div>
                 )}
 
                 {choice && !showReply && (
-                  <div className="mt-3 flex items-center gap-2 pl-9">
-                    <span className="flex gap-1 rounded-2xl rounded-tl-sm bg-sand px-3 py-2.5">
+                  <div className="mt-3 pl-10">
+                    <span className="flex w-fit gap-1 rounded-2xl rounded-tl-sm bg-sand px-3 py-2.5">
                       <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-ink/40 [animation-delay:-0.3s]" />
                       <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-ink/40 [animation-delay:-0.15s]" />
                       <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-ink/40" />
@@ -177,18 +184,18 @@ export default function CallBot() {
                 {choice && showReply && (
                   <>
                     <div className="mt-3 flex items-start gap-2">
-                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sand font-serif text-xs text-ink/70">
-                        S
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-sand">
+                        <img src="/brand-mark.png" alt="" className="h-full w-full object-cover p-1" />
                       </span>
-                      <p className="rounded-2xl rounded-tl-sm bg-sand px-3 py-2 text-sm leading-relaxed text-ink">
+                      <p className="max-w-[85%] rounded-2xl rounded-tl-sm bg-sand px-3 py-2 text-sm leading-relaxed text-ink">
                         {choice.reply}
                       </p>
                     </div>
 
-                    <div className="mt-3 flex flex-col gap-2 pl-9">
+                    <div className="mt-3 flex flex-col gap-2 pl-10">
                       <a
                         href={siteConfig.contact.phoneHref}
-                        className="btn justify-center bg-bronze text-ivory hover:bg-bronze-dark"
+                        className="btn w-full justify-center bg-bronze text-ivory hover:bg-bronze-dark"
                       >
                         <PhoneIcon className="h-4 w-4" />
                         <span className="flex flex-col items-start leading-tight">
@@ -202,7 +209,7 @@ export default function CallBot() {
                         href={`https://wa.me/${siteConfig.contact.whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn-outline justify-center !py-2.5 text-[11px]"
+                        className="btn-outline w-full justify-center !py-2.5 text-[11px]"
                       >
                         <WhatsAppIcon className="h-3.5 w-3.5" />
                         Chat on WhatsApp instead
@@ -210,7 +217,7 @@ export default function CallBot() {
                       <button
                         type="button"
                         onClick={reset}
-                        className="mt-1 text-center text-[11px] uppercase tracking-widest2 text-ink/40 hover:text-ink/60"
+                        className="mt-1 w-full text-center text-[11px] uppercase tracking-widest2 text-ink/40 hover:text-ink/60"
                       >
                         ← Ask something else
                       </button>
