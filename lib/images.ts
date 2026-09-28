@@ -46,6 +46,8 @@ export const siteImages = {
   yantraMassage: "/tantra.webp",
   candleMassage: "/candle.webp",
   lomiLomiMassage: "/loma-lomi.webp",
+  hotStoneTherapy: "/stone.webp",
+  coupleMassage: "/couple.webp",
 } as const;
 
 export type SiteImageKey = keyof typeof siteImages;
@@ -61,6 +63,8 @@ export const treatmentImages: Record<string, SiteImageKey> = {
   "yantra-massage": "yantraMassage",
   "candle-massage": "candleMassage",
   "lomi-lomi-4-hands": "lomiLomiMassage",
+  "hot-stone-therapy": "hotStoneTherapy",
+  "couple-massage": "coupleMassage",
 };
 
 export function treatmentImageForSlug(slug: string) {

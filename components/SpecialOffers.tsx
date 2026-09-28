@@ -8,12 +8,23 @@ const offers = [
     title: "Welcome Offer",
     text: "For guests visiting SoulSpirit for the first time.",
     inclusions: [
-      "A short consultation to choose your ideal treatment",
+      "30 minutes added free to your first session — T&C apply",
+      "Book a 60-minute massage on your first visit and get a complimentary 15-minute scrub & steam",
       "A warm, unhurried welcome from our team",
     ],
   },
   {
     n: "02",
+    tag: "Always On",
+    title: "15% Off Every Service",
+    text: "Our standing discount, on every treatment on the menu.",
+    inclusions: [
+      "Applies to any treatment, any duration",
+      "No coupon needed — just mention it when you book",
+    ],
+  },
+  {
+    n: "03",
     tag: "For Two",
     title: "Bring a Friend",
     text: "Book together, and relax on your own schedule.",
@@ -23,7 +34,7 @@ const offers = [
     ],
   },
   {
-    n: "03",
+    n: "04",
     tag: "Gifting",
     title: "Gift a Spa Experience",
     text: "For a birthday, anniversary, or simply because.",
@@ -54,7 +65,7 @@ export default function SpecialOffers() {
           </Reveal>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {offers.map((o, i) => (
             <Reveal key={o.n} delay={i * 0.08}>
               <article className="flex h-full flex-col border border-line bg-ivory p-8">

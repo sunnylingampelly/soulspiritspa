@@ -264,6 +264,56 @@ export const treatments: Treatment[] = [
     whoItsFor: "Guests wanting the most immersive massage experience on the menu.",
     faqs: [{ q: "Is it strange having two therapists?", a: "Most guests find the synchronised rhythm even more relaxing than a single-handed massage." }],
   },
+  {
+    // Pricing below is an estimate in line with the rest of the menu's
+    // ladder, pending the business confirming the actual rate — it is
+    // never shown on the site (every treatment card says "call or
+    // WhatsApp for pricing"), so nothing customer-facing depends on it.
+    slug: "hot-stone-therapy",
+    name: "Hot Stone Therapy",
+    category: "Massage",
+    categorySlug: "massage",
+    tagline: "Heated stones · deep warmth · release",
+    description:
+      "Smooth, heated stones are worked into the muscles alongside warm oil, letting the heat ease tension deeper than pressure alone.",
+    tiers: [
+      { minutes: 60, price: 3200 },
+      { minutes: 90, price: 4200 },
+      { minutes: 120, price: 4900 },
+    ],
+    benefits: ["Warmth that eases deep muscle tension", "A slower, grounding rhythm", "Leaves muscles feeling loosened, not just relaxed"],
+    whatToExpect: [
+      "Smooth basalt stones warmed to a comfortable temperature",
+      "Stones worked into the back, shoulders and legs alongside warm oil",
+      "A settled, unhurried finish",
+    ],
+    whoItsFor: "Guests carrying deep tension who want warmth alongside pressure.",
+    faqs: [{ q: "How hot are the stones?", a: "They're warmed to a safe, comfortable temperature and checked with you before use." }],
+  },
+  {
+    // Pricing here reflects two guests, each with their own therapist,
+    // side by side — same estimate/confirmation note as above.
+    slug: "couple-massage",
+    name: "Couple Massage",
+    category: "Couples Experiences",
+    categorySlug: "couples-experiences",
+    tagline: "Side by side · shared calm",
+    description:
+      "Two guests, two therapists, one private room — a massage taken side by side, each paced to the individual, at the same unhurried time.",
+    tiers: [
+      { minutes: 60, price: 4600 },
+      { minutes: 90, price: 5800 },
+      { minutes: 120, price: 6800 },
+    ],
+    benefits: ["A shared experience without sharing the pressure or pace", "Two therapists, one private room", "A relaxed, unhurried finish together"],
+    whatToExpect: [
+      "A private room set up for two",
+      "Two therapists working at the same time, each tailored to that guest",
+      "Time afterward to rest together before you leave",
+    ],
+    whoItsFor: "Couples, friends or family wanting to relax together without compromising on their own pressure or pace.",
+    faqs: [{ q: "Can we each choose a different massage?", a: "Yes — each guest's treatment and pressure is tailored individually, even though you're side by side." }],
+  },
 ];
 
 export function getTreatmentBySlug(slug: string) {

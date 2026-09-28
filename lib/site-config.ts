@@ -45,7 +45,7 @@ export const siteConfig = {
     email: "soulspiritspa2026@gmail.com",
   },
 
-  hours: [{ day: "Every Day", time: "10:00 AM – 9:30 PM" }],
+  hours: [{ day: "Every Day", time: "10:30 AM – 9:30 PM" }],
 
   social: {
     instagram: "", // [INSTAGRAM URL]

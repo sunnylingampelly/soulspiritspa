@@ -76,7 +76,7 @@ export default function Hero() {
           className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-champagne/40 bg-charcoal/40 px-4 py-1.5 text-[11px] uppercase tracking-widest2 text-champagne backdrop-blur-sm"
         >
           <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-bronze-light" />
-          Upto 30% Off
+          Upto 15% Off
         </motion.div>
 
         <motion.p
