@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/membership",
     "/contact",
     "/booking",
+    "/spa-khairatabad",
   ].map((route) => ({
     url: `${siteConfig.url}${route}`,
     lastModified: new Date(),

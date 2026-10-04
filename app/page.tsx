@@ -5,6 +5,7 @@ import SignatureTreatments from "@/components/SignatureTreatments";
 import BrandIntro from "@/components/BrandIntro";
 import SpecialOffers from "@/components/SpecialOffers";
 import WhySoulSpirit from "@/components/WhySoulSpirit";
+import SpaceGallery from "@/components/SpaceGallery";
 import MembershipSection from "@/components/MembershipSection";
 import LocationSection from "@/components/LocationSection";
 import FAQSection from "@/components/FAQSection";
@@ -18,9 +19,10 @@ export const metadata: Metadata = {
 
 // Kept deliberately lean: services come right after the hero, and the
 // storytelling sections that used to repeat here (the guided journey, the
-// four principles, the interior gallery, the single-treatment spotlight)
-// now live on their own pages (/experience, /about, /treatments) instead of
-// being duplicated on the homepage too.
+// four principles, the single-treatment spotlight) now live on their own
+// pages (/experience, /about, /treatments) instead of being duplicated on
+// the homepage too. SpaceGallery is the exception — real photos of the
+// actual rooms a guest walks into, reusing them here on purpose.
 export default function HomePage() {
   return (
     <>
@@ -30,6 +32,7 @@ export default function HomePage() {
       <BrandIntro />
       <SpecialOffers />
       <WhySoulSpirit />
+      <SpaceGallery />
       {/* Testimonials hidden for now, at the client's request, until real
           reviews are available — see components/Testimonials.tsx. */}
       <MembershipSection />

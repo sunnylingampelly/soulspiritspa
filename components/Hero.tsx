@@ -5,6 +5,7 @@ import ImagePlaceholder from "./ImagePlaceholder";
 import Parallax from "./Parallax";
 import { CallButton, WhatsAppButton } from "./CTAButtons";
 import { siteImages } from "@/lib/images";
+import { siteConfig } from "@/lib/site-config";
 
 // The mobile hero video is commented out (not deleted) below, at the
 // client's request — a still image is used instead for now. To bring the
@@ -104,11 +105,9 @@ export default function Hero() {
           initial={{ y: 24 }}
           animate={{ y: 0 }}
           transition={{ duration: 1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto mt-5 max-w-4xl text-5xl font-serif font-normal text-ivory sm:mx-0 sm:text-display-xl"
+          className="mx-auto mt-5 max-w-4xl whitespace-nowrap text-[clamp(2rem,7.5vw,4.5rem)] font-serif font-normal leading-none text-ivory sm:mx-0"
         >
-          Relax.
-          <br />
-          Recharge.
+          Relax. Recharge.
         </motion.h1>
 
         <motion.p
@@ -121,6 +120,18 @@ export default function Hero() {
           real rest.
         </motion.p>
 
+        {/* Treatment names and the hours/landmark line below exist mainly
+            for message-match with the ad copy driving traffic here — the
+            same words a guest just read in the ad, right above the fold. */}
+        <motion.p
+          initial={{ y: 14 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.9, delay: 0.62, ease: [0.22, 1, 0.36, 1] }}
+          className="mx-auto mt-4 max-w-md text-balance text-xs uppercase tracking-widest2 text-champagne/90 sm:mx-0"
+        >
+          Thai &middot; Swedish &middot; Deep Tissue &middot; Balinese &middot; Aromatherapy
+        </motion.p>
+
         <motion.div
           initial={{ y: 16 }}
           animate={{ y: 0 }}
@@ -130,6 +141,16 @@ export default function Hero() {
           <CallButton tone="light" />
           <WhatsAppButton tone="light" />
         </motion.div>
+
+        <motion.p
+          initial={{ y: 12 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.9, delay: 0.78, ease: [0.22, 1, 0.36, 1] }}
+          className="mx-auto mt-5 max-w-md text-balance text-xs text-ivory/55 sm:mx-0"
+        >
+          Open Daily {siteConfig.hours[0].time} &middot; Above Union Bank of
+          India, Pillar No. A1180
+        </motion.p>
       </div>
 
       <div className="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 sm:flex">

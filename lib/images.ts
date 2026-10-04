@@ -52,6 +52,18 @@ export const siteImages = {
   lomiLomiMassage: "/loma-lomi.webp",
   hotStoneTherapy: "/stone.webp",
   coupleMassage: "/couple.webp",
+
+  // The real treatment rooms and lounge at SoulSpirit, from
+  // public/gallery-space/ — used by components/SpaceGallery.tsx on the
+  // homepage, separate from the treatment-shot gallery used on /about.
+  spaceTreatmentDaylight: "/gallery-space/treatment-room-daylight.png",
+  spaceTreatmentMoodWide: "/gallery-space/treatment-room-mood-wide.jpg",
+  spaceTreatmentMood: "/gallery-space/treatment-room-mood.jpg",
+  spaceHallway: "/gallery-space/hallway.jpg",
+  spaceTreatmentCorner: "/gallery-space/treatment-corner.jpg",
+  spaceLoungeWide: "/gallery-space/lounge-wide.jpg",
+  spaceLoungeSeating: "/gallery-space/lounge-seating.jpg",
+  spaceLoungeCouch: "/gallery-space/lounge-couch.jpg",
 } as const;
 
 export type SiteImageKey = keyof typeof siteImages;

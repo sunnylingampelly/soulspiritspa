@@ -8,6 +8,7 @@ import FloatingContact from "@/components/FloatingContact";
 import MobileActionBar from "@/components/MobileActionBar";
 import PromoPopup from "@/components/PromoPopup";
 import CallBot from "@/components/CallBot";
+import GoogleAdsTracking from "@/components/GoogleAdsTracking";
 import { siteConfig, openingHoursSpecification } from "@/lib/site-config";
 
 const heading = Fraunces({
@@ -75,6 +76,9 @@ export const metadata: Metadata = {
     statusBarStyle: "black-translucent",
     title: "SoulSpirit",
   },
+  other: {
+    "p:domain_verify": "1e21d65defbe50a742a5b3711f2a96f5",
+  },
 };
 
 export const viewport: Viewport = {
@@ -132,6 +136,7 @@ export default function RootLayout({
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <GoogleAdsTracking />
         <OfferBanner />
         <Nav />
         <main>{children}</main>
