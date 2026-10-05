@@ -4,7 +4,9 @@ import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { treatments, formatDurations } from "@/lib/treatments-data";
-import { CallButton, WhatsAppButton } from "./CTAButtons";
+import { buildWhatsAppLink } from "@/lib/site-config";
+import { sendConversion } from "@/lib/google-ads";
+import { WhatsAppButton } from "./CTAButtons";
 
 const steps = ["Treatment", "Date", "Time", "Details", "Confirm"];
 
@@ -67,13 +69,13 @@ export default function BookingFlow() {
           Thank you, {form.name.split(" ")[0] || "friend"}.
         </h2>
         <p className="mt-5 text-ink/65">
-          Your booking request has been prepared. Our booking system is not
-          yet connected, so please confirm your slot with our team on
-          WhatsApp or by phone, we&rsquo;ll respond as quickly as possible.
+          We&rsquo;ve opened WhatsApp with your treatment, date, time and
+          details already filled in — just hit send and our team will
+          confirm your slot as quickly as possible. If it didn&rsquo;t open,
+          use the button below.
         </p>
-        <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
-          <CallButton label="Call to Confirm" />
-          <WhatsAppButton label="Confirm on WhatsApp" message={whatsappMessage} />
+        <div className="mt-10 flex justify-center">
+          <WhatsAppButton label="Open WhatsApp to Confirm" message={whatsappMessage} />
         </div>
       </div>
     );
@@ -245,7 +247,18 @@ export default function BookingFlow() {
             Continue
           </button>
         ) : (
-          <button type="button" onClick={() => setSubmitted(true)} className="btn-primary">
+          <button
+            type="button"
+            onClick={() => {
+              // Opened synchronously, inside the click handler itself —
+              // not deferred to an effect — so browsers still treat it as
+              // a direct response to the click and don't block the popup.
+              window.open(buildWhatsAppLink(whatsappMessage), "_blank", "noopener,noreferrer");
+              sendConversion("whatsapp");
+              setSubmitted(true);
+            }}
+            className="btn-primary"
+          >
             Confirm Booking
           </button>
         )}

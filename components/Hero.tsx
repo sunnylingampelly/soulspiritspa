@@ -101,7 +101,7 @@ export default function Hero() {
           initial={{ y: 24 }}
           animate={{ y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto mt-4 max-w-2xl text-balance text-[clamp(2rem,6vw,4.5rem)] font-serif font-normal leading-[1.05] text-ivory sm:mx-0"
+          className="mx-auto mt-4 max-w-xl text-balance text-[clamp(1.75rem,4.5vw,3.25rem)] font-serif font-normal leading-[1.1] text-ivory sm:mx-0"
         >
           Massage &amp; Wellness Spa in Khairatabad.
         </motion.h1>

@@ -57,7 +57,16 @@ const whatsappToneClass: Record<Tone, string> = {
 const sizeClass = {
   default: "",
   sm: "!px-4 !py-3.5 !text-xs sm:!py-2.5 sm:!text-[10px]",
+  // Smaller still — used by the desktop nav, where both buttons sit
+  // alongside 7 nav links in a single row with limited width.
+  xs: "!px-3 !py-2 !text-[9px]",
 } as const;
+
+const iconSizeClass: Record<keyof typeof sizeClass, string> = {
+  default: "h-4 w-4",
+  sm: "h-3.5 w-3.5",
+  xs: "h-3 w-3",
+};
 
 // The number is shown on every Call button, not just the label text, per
 // the brief — guests shouldn't have to tap through to learn the number.
@@ -77,8 +86,8 @@ export function CallButton({
       href={siteConfig.contact.phoneHref}
       className={`btn ${callToneClass[tone]} ${sizeClass[size]} ${className}`}
     >
-      <PhoneIcon className={size === "sm" ? "h-3.5 w-3.5" : "h-4 w-4"} />
-      {size === "sm" ? (
+      <PhoneIcon className={iconSizeClass[size]} />
+      {size === "sm" || size === "xs" ? (
         siteConfig.contact.phoneDisplay
       ) : (
         <span className="flex flex-col items-start leading-tight">
@@ -112,7 +121,7 @@ export function WhatsAppButton({
       rel="noopener noreferrer"
       className={`btn ${whatsappToneClass[tone]} ${sizeClass[size]} ${className}`}
     >
-      <WhatsAppIcon className={size === "sm" ? "h-3.5 w-3.5" : "h-4 w-4"} />
+      <WhatsAppIcon className={iconSizeClass[size]} />
       {label}
     </a>
   );

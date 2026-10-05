@@ -32,6 +32,11 @@ export default function Footer() {
                     </Link>
                   </li>
                 ))}
+              <li>
+                <Link href="/blog" className="link-underline hover:text-ivory">
+                  Blog
+                </Link>
+              </li>
             </ul>
           </div>
 

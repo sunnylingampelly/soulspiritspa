@@ -57,8 +57,16 @@ export default function Nav() {
           />
         </Link>
 
+        {/* 7 nav items plus both full CTA buttons need close to 1450px to
+            sit comfortably — below that, the Call button's label and the
+            WhatsApp button were overflowing off-screen entirely (not just
+            visually cramped). Rather than shrink everything to the point
+            of illegibility, the nav's own Call/WhatsApp buttons only
+            appear once there's genuinely room (2xl, 1536px+); below that,
+            FloatingContact's persistent bottom-right buttons (visible from
+            the sm breakpoint up) already cover the same two actions. */}
         <ul
-          className={`hidden lg:flex items-center gap-9 text-[13px] uppercase tracking-widest2 transition-colors duration-500 ${
+          className={`hidden items-center gap-5 text-[11px] uppercase tracking-widest2 transition-colors duration-500 lg:flex xl:gap-7 ${
             light ? "text-ivory/80" : "text-ink/80"
           }`}
         >
@@ -74,9 +82,9 @@ export default function Nav() {
           ))}
         </ul>
 
-        <div className="hidden items-center gap-3 lg:flex">
-          <CallButton size="sm" />
-          <WhatsAppButton size="sm" tone={light ? "light" : "dark"} />
+        <div className="hidden shrink-0 items-center gap-3 2xl:flex">
+          <CallButton size="xs" />
+          <WhatsAppButton size="xs" tone={light ? "light" : "dark"} />
         </div>
 
         <button
