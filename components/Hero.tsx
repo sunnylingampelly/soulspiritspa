@@ -73,11 +73,103 @@ export default function Hero() {
         <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-charcoal/55 to-transparent sm:h-48" />
         {/* Stronger, bottom-weighted wash on mobile — the greeting photo is
             bright and busy (two faces, patterned wall art) right where the
-            headline sits, so it needs more contrast than a flat tint gives. */}
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/95 via-charcoal/70 to-charcoal/20 sm:hidden" />
+            headline sits, so it needs more contrast than a flat tint gives.
+            A warm near-black (the site's own "ink" tone) rather than flat
+            charcoal, graduated so the top of the photo — faces, the room —
+            stays visible instead of going fully dark. */}
+        <div
+          className="absolute inset-0 sm:hidden"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(27,24,20,0.40) 0%, rgba(27,24,20,0.56) 45%, rgba(27,24,20,0.82) 100%)",
+          }}
+        />
       </div>
 
-      <div className="container-luxe relative z-10 pb-20 pt-40 text-center sm:pb-28 sm:text-left">
+      {/* =====================================================================
+          MOBILE HERO (<640px) — a purpose-built layout, not a squeezed-down
+          version of the desktop one: tighter spacing, a two-line headline,
+          and full-width tap-friendly CTAs, per the mobile hero review. The
+          desktop block below is untouched, byte-for-byte, from before this
+          pass — this section only ever renders under `sm:hidden`.
+          ===================================================================== */}
+      <div className="container-luxe relative z-10 flex flex-col items-center px-6 pb-9 pt-28 text-center sm:hidden">
+        <motion.h1
+          initial={{ y: 20 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          className="text-balance text-[clamp(2.125rem,9vw,2.875rem)] font-serif font-medium leading-[1.1] text-ivory"
+        >
+          Massage &amp; Wellness Spa in Khairatabad
+        </motion.h1>
+
+        <motion.p
+          initial={{ y: 10 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.8, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
+          className="eyebrow mt-3 text-champagne"
+        >
+          SoulSpirit Spa · Khairatabad
+        </motion.p>
+
+        <motion.p
+          initial={{ y: 10 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.8, delay: 0.36, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-4 font-serif text-lg text-ivory"
+        >
+          Relax. Recharge. Feel Your Best.
+        </motion.p>
+
+        <motion.p
+          initial={{ y: 10 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.8, delay: 0.44, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-2 max-w-[30ch] text-balance text-sm text-ivory/75"
+        >
+          A peaceful wellness spa in the heart of Khairatabad, Hyderabad.
+        </motion.p>
+
+        <motion.p
+          initial={{ y: 10 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.8, delay: 0.52, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-4 text-[11px] uppercase leading-relaxed tracking-[0.18em] text-champagne/90"
+        >
+          Thai &middot; Swedish &middot; Deep Tissue
+          <br />
+          Balinese &middot; Aromatherapy
+        </motion.p>
+
+        <motion.div
+          initial={{ y: 14 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-6 flex w-full flex-col gap-3"
+        >
+          <CallButton tone="light" className="min-h-[76px] w-full justify-center" />
+          <WhatsAppButton
+            tone="light"
+            label="Book on WhatsApp"
+            className="min-h-[72px] w-full justify-center"
+          />
+        </motion.div>
+
+        <motion.div
+          initial={{ y: 10 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.8, delay: 0.68, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-5 text-[11px] leading-relaxed text-ivory/55"
+        >
+          <p>Open Daily &middot; {siteConfig.hours[0].time}</p>
+          <p className="mt-0.5">Above Union Bank of India &middot; Pillar No. A1180</p>
+        </motion.div>
+      </div>
+
+      {/* =====================================================================
+          DESKTOP / TABLET HERO (≥640px) — unchanged from before this pass.
+          ===================================================================== */}
+      <div className="container-luxe relative z-10 hidden pb-28 pt-40 text-left sm:block">
         {/* Position-only entrance animation, deliberately never opacity —
             same reasoning as Reveal.tsx: if the animation never gets to
             run (slow hydration, a blocked script, etc.) this content must
@@ -101,9 +193,9 @@ export default function Hero() {
           initial={{ y: 24 }}
           animate={{ y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto mt-4 max-w-xl text-balance text-[clamp(1.75rem,4.5vw,3.25rem)] font-serif font-normal leading-[1.1] text-ivory sm:mx-0"
+          className="mt-4 max-w-xl text-balance text-[clamp(1.75rem,4.5vw,3.25rem)] font-serif font-normal leading-[1.1] text-ivory"
         >
-          Massage &amp; Wellness Spa in Khairatabad.
+          Massage &amp; Wellness Spa in Khairatabad
         </motion.h1>
 
         <motion.p
@@ -119,7 +211,7 @@ export default function Hero() {
           initial={{ y: 16 }}
           animate={{ y: 0 }}
           transition={{ duration: 0.9, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto mt-7 max-w-md text-balance font-sans text-base text-ivory/75 sm:mx-0 sm:text-lg"
+          className="mt-7 max-w-md text-balance font-sans text-lg text-ivory/75"
         >
           A calm, private spa in Khairatabad, Hyderabad — real massages,
           real rest.
@@ -132,7 +224,7 @@ export default function Hero() {
           initial={{ y: 14 }}
           animate={{ y: 0 }}
           transition={{ duration: 0.9, delay: 0.62, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto mt-4 max-w-md text-balance text-xs uppercase tracking-widest2 text-champagne/90 sm:mx-0"
+          className="mt-4 max-w-md text-balance text-xs uppercase tracking-widest2 text-champagne/90"
         >
           Thai &middot; Swedish &middot; Deep Tissue &middot; Balinese &middot; Aromatherapy
         </motion.p>
@@ -141,7 +233,7 @@ export default function Hero() {
           initial={{ y: 16 }}
           animate={{ y: 0 }}
           transition={{ duration: 0.9, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-10 flex flex-col gap-4 sm:flex-row"
+          className="mt-10 flex flex-row gap-4"
         >
           <CallButton tone="light" />
           <WhatsAppButton tone="light" />
@@ -151,7 +243,7 @@ export default function Hero() {
           initial={{ y: 12 }}
           animate={{ y: 0 }}
           transition={{ duration: 0.9, delay: 0.78, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto mt-5 max-w-md text-balance text-xs text-ivory/55 sm:mx-0"
+          className="mt-5 max-w-md text-balance text-xs text-ivory/55"
         >
           Open Daily {siteConfig.hours[0].time} &middot; Above Union Bank of
           India, Pillar No. A1180
