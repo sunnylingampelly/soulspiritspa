@@ -79,6 +79,7 @@ export const siteConfig = {
     { label: "About", href: "/about" },
     { label: "Experience", href: "/experience" },
     { label: "Membership", href: "/membership" },
+    { label: "Booking", href: "/booking" },
     { label: "Contact", href: "/contact" },
   ],
 };

@@ -8,6 +8,7 @@ import {
   getTreatmentBySlug,
   getRelatedTreatments,
   formatDurations,
+  formatINR,
 } from "@/lib/treatments-data";
 import { siteConfig } from "@/lib/site-config";
 import { CallButton, WhatsAppButton } from "@/components/CTAButtons";
@@ -28,7 +29,7 @@ export async function generateMetadata({
   const treatment = getTreatmentBySlug(slug);
   if (!treatment) return {};
   return {
-    title: treatment.name,
+    title: `${treatment.name} in Khairatabad`,
     description: treatment.description,
     alternates: { canonical: `/treatments/${treatment.slug}` },
   };
@@ -109,7 +110,7 @@ export default async function TreatmentDetailPage({
         <div className="container-luxe relative z-10 pb-16 pt-32">
           <p className="eyebrow text-champagne">{treatment.category}</p>
           <h1 className="mt-4 max-w-2xl text-display-lg font-serif text-ivory text-balance">
-            {treatment.name}
+            {treatment.name} in Khairatabad
           </h1>
           <p className="mt-4 text-sm uppercase tracking-widest2 text-ivory/70">
             {treatment.tagline}
@@ -119,7 +120,7 @@ export default async function TreatmentDetailPage({
 
       <section className="section-pad">
         <div className="container-luxe grid grid-cols-1 gap-16 lg:grid-cols-[1fr_360px]">
-          <div>
+          <div className="order-2 lg:order-1">
             <Reveal>
               <p className="max-w-prose text-lg leading-relaxed text-ink/75">
                 {treatment.description}
@@ -172,18 +173,19 @@ export default async function TreatmentDetailPage({
             )}
           </div>
 
-          <Reveal delay={0.1}>
-            <aside className="sticky top-28 border border-line p-8">
-              <p className="eyebrow text-ink/40">Available Durations</p>
+          <Reveal delay={0.1} className="order-1 lg:order-2">
+            <aside className="border border-line p-8 lg:sticky lg:top-28">
+              <p className="eyebrow text-ink/40">Duration &amp; Pricing</p>
               <dl className="mt-4 divide-y divide-line">
                 {treatment.tiers.map((tier) => (
-                  <div key={tier.minutes} className="py-3">
-                    <dd className="font-serif text-lg">{tier.minutes} minutes</dd>
+                  <div key={tier.minutes} className="flex items-baseline justify-between py-3">
+                    <dt className="font-serif text-lg">{tier.minutes} minutes</dt>
+                    <dd className="text-ink/70">{formatINR(tier.price)}</dd>
                   </div>
                 ))}
               </dl>
               <p className="mt-4 text-xs text-ink/50">
-                Call or WhatsApp our team for current pricing.
+                15% off every service — no coupon needed, just mention it when you book.
               </p>
 
               <div className="mt-8 flex flex-col gap-3">

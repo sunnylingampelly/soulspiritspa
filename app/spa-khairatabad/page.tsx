@@ -18,7 +18,7 @@ import { siteConfig } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "Spa in Khairatabad | 15% Off All Services",
   description:
-    "SoulSpirit Spa in Khairatabad, Hyderabad — Thai, Swedish, Deep Tissue, Balinese and Aromatherapy massage. 15% off all services, limited time. Open daily 10:30 AM–9:30 PM. Call or WhatsApp to book.",
+    "SoulSpirit Spa in Khairatabad, Hyderabad — Thai, Swedish, Deep Tissue, Balinese and Aromatherapy massage. 15% off all services, every day. Open daily 10:30 AM–9:30 PM. Call or WhatsApp to book.",
   alternates: { canonical: "/spa-khairatabad" },
 };
 
@@ -46,7 +46,7 @@ export default function SpaKhairatabadPage() {
           <Reveal delay={0.08}>
             <div className="mx-auto mt-5 inline-flex max-w-xs items-center gap-2 rounded-full border border-champagne/40 bg-charcoal/40 px-4 py-2 text-[11px] uppercase tracking-widest2 text-champagne backdrop-blur-sm sm:max-w-none">
               <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-bronze-light" />
-              15% Off All Spa Services — Limited Time
+              15% Off All Spa Services — Every Day
             </div>
           </Reveal>
 

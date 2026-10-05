@@ -9,6 +9,7 @@ import {
   categories,
   treatments as allTreatments,
   formatDurations,
+  startingPrice,
   getTreatmentsByCategory,
   type Treatment,
 } from "@/lib/treatments-data";
@@ -98,7 +99,7 @@ export default function TreatmentGrid({
                     <span className="uppercase tracking-widest2">For:</span> {t.whoItsFor}
                   </p>
                   <p className="mt-3 text-xs uppercase tracking-widest2 text-ink/40">
-                    {formatDurations(t)} min · call or WhatsApp for pricing
+                    {formatDurations(t)} min · from {startingPrice(t)}
                   </p>
 
                   <div className="mt-5 flex flex-col gap-3 border-t border-line pt-5 sm:flex-row sm:items-center">

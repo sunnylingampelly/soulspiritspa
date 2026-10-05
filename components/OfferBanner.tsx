@@ -2,7 +2,7 @@
 // (no framer-motion, no scroll-linking) so it's always running reliably,
 // regardless of hydration timing or scroll-event quirks elsewhere on the
 // site — it's just a compositor-driven CSS animation.
-const MESSAGE = "15% Off Every Service — Limited Time";
+const MESSAGE = "15% Off Every Service — Every Day";
 
 function Segment() {
   return (

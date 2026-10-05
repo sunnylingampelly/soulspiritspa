@@ -8,6 +8,7 @@ const offers = [
     title: "Welcome Offer",
     text: "For guests visiting SoulSpirit for the first time.",
     inclusions: [
+      "Combines with our everyday 15% off — first-time guests get both",
       "30 minutes added free to your first session — T&C apply",
       "Book a 60-minute massage on your first visit and get a complimentary 15-minute scrub & steam",
       "A warm, unhurried welcome from our team",

@@ -3,7 +3,7 @@ import Reveal from "./Reveal";
 import ImagePlaceholder from "./ImagePlaceholder";
 import Parallax from "./Parallax";
 import { CallButton, WhatsAppButton } from "./CTAButtons";
-import { getTreatmentBySlug, formatDurations } from "@/lib/treatments-data";
+import { getTreatmentBySlug, formatDurations, startingPrice } from "@/lib/treatments-data";
 import { treatmentImageForSlug } from "@/lib/images";
 
 export default function TreatmentSpotlight() {
@@ -39,7 +39,7 @@ export default function TreatmentSpotlight() {
           </Reveal>
           <Reveal delay={0.22}>
             <p className="mt-5 text-xs uppercase tracking-widest2 text-ivory/40">
-              {formatDurations(treatment)} min · call or WhatsApp for pricing
+              {formatDurations(treatment)} min · from {startingPrice(treatment)}
             </p>
           </Reveal>
           <Reveal delay={0.28}>

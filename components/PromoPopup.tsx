@@ -111,12 +111,13 @@ export default function PromoPopup() {
             />
 
             <div className="relative z-10 mt-auto p-5 text-ivory sm:mt-0 sm:p-7 sm:text-ink">
-              <p className="eyebrow text-champagne sm:text-bronze">Limited Time Offer</p>
+              <p className="eyebrow text-champagne sm:text-bronze">Standing Offer</p>
               <h3 className="mt-2 font-serif text-2xl text-balance text-ivory sm:text-ink">
                 Enjoy 15% off
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-ivory/80 sm:text-ink/60">
-                Share your details and we&rsquo;ll confirm your discount on
+                15% off every service, every day — plus extra perks on your
+                first visit. Share your details and we&rsquo;ll confirm on
                 WhatsApp.
               </p>
 

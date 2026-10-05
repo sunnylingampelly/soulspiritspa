@@ -92,23 +92,28 @@ export default function Hero() {
           15% Off
         </motion.div>
 
+        {/* Specific, keyword-led headline for search/ad relevance — "what
+            is this and where" — with the brand name kept right underneath
+            rather than above it, per the landing-page review. Long enough
+            that it wraps on narrow screens rather than forcing a one-line
+            fit (unlike the shorter "Relax. Recharge." this replaced). */}
+        <motion.h1
+          initial={{ y: 24 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="mx-auto mt-4 max-w-2xl text-balance text-[clamp(2rem,6vw,4.5rem)] font-serif font-normal leading-[1.05] text-ivory sm:mx-0"
+        >
+          Massage &amp; Wellness Spa in Khairatabad.
+        </motion.h1>
+
         <motion.p
           initial={{ y: 12 }}
           animate={{ y: 0 }}
-          transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.9, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
           className="eyebrow mt-4 text-champagne"
         >
           SoulSpirit Spa · Khairatabad, Hyderabad
         </motion.p>
-
-        <motion.h1
-          initial={{ y: 24 }}
-          animate={{ y: 0 }}
-          transition={{ duration: 1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto mt-5 max-w-4xl whitespace-nowrap text-[clamp(2rem,7.5vw,4.5rem)] font-serif font-normal leading-none text-ivory sm:mx-0"
-        >
-          Relax. Recharge.
-        </motion.h1>
 
         <motion.p
           initial={{ y: 16 }}
