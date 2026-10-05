@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import ImagePlaceholder from "./ImagePlaceholder";
 import Parallax from "./Parallax";
-import { CallButton, WhatsAppButton } from "./CTAButtons";
+import { CallButton, WhatsAppButton, DirectionsButton } from "./CTAButtons";
 import { siteImages } from "@/lib/images";
 import { siteConfig } from "@/lib/site-config";
 
@@ -23,7 +23,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export default function Hero() {
   return (
-    <section className="relative flex h-[100svh] min-h-[640px] w-full items-end overflow-hidden bg-charcoal">
+    <section className="relative flex min-h-[max(640px,100svh)] w-full items-end overflow-hidden bg-charcoal sm:h-[100svh]">
       <div className="absolute inset-0">
         {/* Mobile only: a still image (the looping video is commented out
             above/below, not deleted, in case it comes back later). */}
@@ -153,6 +153,11 @@ export default function Hero() {
             label="Book on WhatsApp"
             className="min-h-[72px] w-full justify-center"
           />
+          <DirectionsButton
+            tone="light"
+            size="sm"
+            className="min-h-[52px] w-full justify-center"
+          />
         </motion.div>
 
         <motion.div
@@ -233,10 +238,11 @@ export default function Hero() {
           initial={{ y: 16 }}
           animate={{ y: 0 }}
           transition={{ duration: 0.9, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-10 flex flex-row gap-4"
+          className="mt-10 flex flex-row flex-wrap items-center gap-4"
         >
           <CallButton tone="light" />
           <WhatsAppButton tone="light" />
+          <DirectionsButton tone="light" size="sm" />
         </motion.div>
 
         <motion.p

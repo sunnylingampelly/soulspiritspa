@@ -34,7 +34,7 @@ export const siteConfig = {
     // Profile listing (Share -> Embed a map) — the same place (matching
     // CID 0x3bcb978590f9cfeb:0x98b8ce5e879da4ff) as the two links above.
     mapEmbedUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15227.223727538769!2d78.43251085540628!3d17.4210986355471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb978590f9cfeb%3A0x98b8ce5e879da4ff!2ssoulspiritspa!5e0!3m2!1sen!2sin!4v1790423941664!5m2!1sen!2sin",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2882.179054933255!2d78.45897325336404!3d17.41217034214054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb978590f9cfeb%3A0x98b8ce5e879da4ff!2sSoul%20Spirit%20Spa!5e0!3m2!1sen!2sin!4v1791220525493!5m2!1sen!2sin",
     mapsDirectionsUrl: "https://www.google.com/maps/dir/?api=1&destination=17.4105619,78.4611984",
   },
 

@@ -37,6 +37,19 @@ export function WhatsAppIcon({ className = "h-4 w-4" }: { className?: string }) 
   );
 }
 
+export function MapPinIcon({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" className={className}>
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 21.5c4.5-4.2 7.5-8.1 7.5-11.8a7.5 7.5 0 1 0-15 0c0 3.7 3 7.6 7.5 11.8z"
+      />
+      <circle cx="12" cy="9.7" r="2.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 type Tone = "dark" | "light";
 
 const callToneClass: Record<Tone, string> = {
@@ -52,6 +65,14 @@ const callToneClass: Record<Tone, string> = {
 const whatsappToneClass: Record<Tone, string> = {
   dark: "border border-ink/20 text-ink hover:border-[#25D366]/60 hover:bg-[#25D366]/5",
   light: "border border-ivory/30 text-ivory hover:border-[#25D366]/60 hover:bg-ivory/5",
+};
+
+// Outline treatment for Directions — same idea as WhatsApp's outline, but
+// neutral (no brand colour to carry), so it reads as the third, secondary
+// action next to the two primary conversion buttons.
+const directionsToneClass: Record<Tone, string> = {
+  dark: "border border-ink/20 text-ink hover:border-ink/50 hover:bg-ink/5",
+  light: "border border-ivory/30 text-ivory hover:border-ivory/60 hover:bg-ivory/5",
 };
 
 const sizeClass = {
@@ -122,6 +143,35 @@ export function WhatsAppButton({
       className={`btn ${whatsappToneClass[tone]} ${sizeClass[size]} ${className}`}
     >
       <WhatsAppIcon className={iconSizeClass[size]} />
+      {label}
+    </a>
+  );
+}
+
+// Opens the business's real Google Maps directions link (set once, in
+// lib/site-config.ts) — a secondary conversion, same as Call/WhatsApp, and
+// already recognised by the Google Ads click tracker in
+// components/GoogleAdsTracking.tsx (it classifies any google.com/maps
+// link as a "directions" click automatically).
+export function DirectionsButton({
+  label = "Get Directions",
+  tone = "dark",
+  size = "default",
+  className = "",
+}: {
+  label?: string;
+  tone?: Tone;
+  size?: keyof typeof sizeClass;
+  className?: string;
+}) {
+  return (
+    <a
+      href={siteConfig.location.mapsDirectionsUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`btn ${directionsToneClass[tone]} ${sizeClass[size]} ${className}`}
+    >
+      <MapPinIcon className={iconSizeClass[size]} />
       {label}
     </a>
   );

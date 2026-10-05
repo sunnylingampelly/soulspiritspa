@@ -15,14 +15,6 @@
   }
 }
 
-/* A light trail that revolves around the chat launcher — a conic-gradient
-   ring, rotated continuously. Pure CSS transform, compositor-driven. */
-@keyframes revolve-glow {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 @layer base {
   * {
     @apply border-line;

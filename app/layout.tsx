@@ -5,9 +5,9 @@ import Nav from "@/components/Nav";
 import OfferBanner from "@/components/OfferBanner";
 import Footer from "@/components/Footer";
 import FloatingContact from "@/components/FloatingContact";
+import FloatingDirections from "@/components/FloatingDirections";
 import MobileActionBar from "@/components/MobileActionBar";
 import PromoPopup from "@/components/PromoPopup";
-import CallBot from "@/components/CallBot";
 import GoogleAdsTracking from "@/components/GoogleAdsTracking";
 import { siteConfig, openingHoursSpecification } from "@/lib/site-config";
 
@@ -142,8 +142,8 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <FloatingContact />
+        <FloatingDirections />
         <MobileActionBar />
-        <CallBot />
         <PromoPopup />
       </body>
     </html>
