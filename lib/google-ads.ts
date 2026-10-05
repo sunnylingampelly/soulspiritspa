@@ -131,11 +131,20 @@ export function sendConversion(
     onSent?.();
   };
 
-  window.gtag!("event", "conversion", {
+  // Base conversion params
+  const conversionParams: Record<string, unknown> = {
     send_to: getSendTo(kind),
-    ...params,
     event_callback: callOnce,
-  });
+    ...params,
+  };
+
+  // Add value and currency for phone conversions
+  if (kind === "phone") {
+    conversionParams.value = 1.0;
+    conversionParams.currency = "INR";
+  }
+
+  window.gtag!("event", "conversion", conversionParams);
 
   // gtag's event_callback is not guaranteed to fire (blocked request,
   // offline, the beacon racing page unload) — this fallback guarantees
