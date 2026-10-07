@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { buildWhatsAppLink, defaultWhatsAppMessage, siteConfig } from "@/lib/site-config";
-import { sendConversion } from "@/lib/google-ads";
 
 // ---------------------------------------------------------------------------
 // The site's conversion CTAs: Call and WhatsApp are the two primary ones,
@@ -161,10 +160,7 @@ export function WhatsAppButton({
 }
 
 // Opens the business's real Google Maps directions link (set once, in
-// lib/site-config.ts) — a secondary conversion, same as Call/WhatsApp, and
-// already recognised by the Google Ads click tracker in
-// components/GoogleAdsTracking.tsx (it classifies any google.com/maps
-// link as a "directions" click automatically).
+// lib/site-config.ts) — a secondary conversion, same as Call/WhatsApp.
 export function DirectionsButton({
   label = "Get Directions",
   tone = "dark",
@@ -190,10 +186,7 @@ export function DirectionsButton({
 }
 
 // Links to the real /booking page (the guided request flow that ends by
-// opening WhatsApp with the filled details) and fires a "booking_click"
-// conversion — a lighter-weight engagement signal, distinct from
-// trackConfirmedBooking()'s genuine, server-confirmed booking conversion,
-// which this never touches.
+// opening WhatsApp with the filled details).
 export function BookAppointmentButton({
   label = "Book Appointment",
   tone = "dark",
@@ -208,7 +201,6 @@ export function BookAppointmentButton({
   return (
     <Link
       href="/booking"
-      onClick={() => sendConversion("booking_click")}
       className={`btn ${directionsToneClass[tone]} ${sizeClass[size]} ${className}`}
     >
       <CalendarIcon className={iconSizeClass[size]} />

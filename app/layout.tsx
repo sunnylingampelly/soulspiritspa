@@ -8,7 +8,6 @@ import FloatingContact from "@/components/FloatingContact";
 import FloatingDirections from "@/components/FloatingDirections";
 import MobileActionBar from "@/components/MobileActionBar";
 import PromoPopup from "@/components/PromoPopup";
-import GoogleAdsTracking from "@/components/GoogleAdsTracking";
 import { siteConfig, openingHoursSpecification } from "@/lib/site-config";
 
 const heading = Fraunces({
@@ -138,13 +137,36 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={`${heading.variable} ${body.variable}`}>
+      <head>
+        {/* Google Tag Manager */}
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WLJ7PWPD');`,
+          }}
+        />
+        {/* End Google Tag Manager */}
+      </head>
       <body className="pb-[calc(60px+env(safe-area-inset-bottom))] lg:pb-0">
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-WLJ7PWPD"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <GoogleAdsTracking />
         <OfferBanner />
         <Nav />
         <main>{children}</main>

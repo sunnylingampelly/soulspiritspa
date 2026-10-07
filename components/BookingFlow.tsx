@@ -5,7 +5,6 @@ import { useSearchParams } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { treatments, formatDurations } from "@/lib/treatments-data";
 import { buildWhatsAppLink } from "@/lib/site-config";
-import { sendConversion } from "@/lib/google-ads";
 import { WhatsAppButton } from "./CTAButtons";
 
 const steps = ["Treatment", "Date", "Time", "Details", "Confirm"];
@@ -254,8 +253,6 @@ export default function BookingFlow() {
               // not deferred to an effect — so browsers still treat it as
               // a direct response to the click and don't block the popup.
               window.open(buildWhatsAppLink(whatsappMessage), "_blank", "noopener,noreferrer");
-              sendConversion("whatsapp");
-              sendConversion("booking_click");
               setSubmitted(true);
             }}
             className="btn-primary"
