@@ -1,3 +1,7 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { siteConfig } from "@/lib/site-config";
 import { MapPinIcon } from "./CTAButtons";
 
@@ -7,8 +11,32 @@ import { MapPinIcon } from "./CTAButtons";
 // in its place: a quick, always-reachable way to open Maps from anywhere
 // on the site, on both mobile and desktop.
 export default function FloatingDirections() {
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+
+  // Same hero routes MobileActionBar and Nav treat specially — the hero's
+  // own CTA row already includes a full Get Directions button, so this
+  // floating copy stays tucked away until scroll clears the hero instead
+  // of sitting on top of it.
+  const isHeroRoute =
+    pathname === "/" || (pathname.startsWith("/treatments/") && pathname !== "/treatments");
+
+  useEffect(() => {
+    if (!isHeroRoute) return;
+    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.6);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isHeroRoute]);
+
+  const hidden = isHeroRoute && !scrolled;
+
   return (
-    <div className="fixed bottom-[calc(76px+env(safe-area-inset-bottom))] right-5 z-40 sm:bottom-[150px] sm:right-8">
+    <div
+      className={`fixed bottom-[calc(76px+env(safe-area-inset-bottom))] right-5 z-40 transition-all duration-500 ease-luxe sm:bottom-[150px] sm:right-8 ${
+        hidden ? "pointer-events-none translate-y-4 opacity-0" : "translate-y-0 opacity-100"
+      }`}
+    >
       <a
         href={siteConfig.location.mapsDirectionsUrl}
         target="_blank"

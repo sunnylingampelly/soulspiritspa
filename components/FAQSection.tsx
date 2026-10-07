@@ -7,24 +7,36 @@ const faqs = [
     a: `SoulSpirit Spa is located at ${siteConfig.location.addressLine}, ${siteConfig.location.city}, ${siteConfig.location.region} ${siteConfig.location.postalCode}. See our Location page for directions.`,
   },
   {
-    q: "How do I book an appointment?",
-    a: "You can book online through our Booking page, message us on WhatsApp, or call us directly, whichever is easiest for you.",
+    q: "Is there a spa near Somajiguda?",
+    a: `Yes — SoulSpirit Spa is in ${siteConfig.location.neighborhood}, just a short drive from Somajiguda and Lakdikapul, and easily reached from across central Hyderabad.`,
+  },
+  {
+    q: "Which massage therapies are available in Khairatabad?",
+    a: "Our current menu includes Thai, Swedish, Balinese, Deep Tissue, Aromatherapy, Yantra and Candle massage, as well as our four-hands Lomi Lomi and Couple Massage. See the full Treatments page for details.",
+  },
+  {
+    q: "Do you offer Thai massage?",
+    a: "Yes. Thai Massage (Dry) is on our menu at SoulSpirit Spa, combining assisted stretching with firm, rhythmic pressure-point work, in 60, 90 or 120-minute sessions.",
+  },
+  {
+    q: "Do you offer deep tissue massage?",
+    a: "Yes. Deep Tissue Massage is available in 60, 90 and 120-minute sessions, with pressure adjusted to what's comfortable for you.",
+  },
+  {
+    q: "Is Soul Spirit Spa open today?",
+    a: `We're open ${siteConfig.hours.map((h) => `${h.day}, ${h.time}`).join(", ")} — including today.`,
+  },
+  {
+    q: "How can I book a massage?",
+    a: "You can call us, message us on WhatsApp, or submit a request through our Booking page — whichever is easiest for you.",
   },
   {
     q: "Does SoulSpirit accept WhatsApp bookings?",
     a: "Yes. Tap the WhatsApp button anywhere on the site to send us your preferred treatment, date and time.",
   },
   {
-    q: "What treatments are available?",
-    a: "Our current menu includes Thai, Swedish, Balinese, Deep Tissue, Aromatherapy, Yantra and Candle massage, as well as our four-hands Lomi Lomi. See the full Treatments page for details.",
-  },
-  {
     q: "Are treatments available in different durations?",
     a: "Yes, every treatment on our menu is available in 60, 90 and 120 minute sessions.",
-  },
-  {
-    q: "What are your opening hours?",
-    a: `We are open ${siteConfig.hours.map((h) => `${h.day}: ${h.time}`).join(", ")}.`,
   },
   {
     q: "Is SoulSpirit suitable for first-time guests?",

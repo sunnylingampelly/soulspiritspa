@@ -255,6 +255,7 @@ export default function BookingFlow() {
               // a direct response to the click and don't block the popup.
               window.open(buildWhatsAppLink(whatsappMessage), "_blank", "noopener,noreferrer");
               sendConversion("whatsapp");
+              sendConversion("booking_click");
               setSubmitted(true);
             }}
             className="btn-primary"

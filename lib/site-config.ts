@@ -71,7 +71,12 @@ export const siteConfig = {
     "Private Treatment Rooms",
     "Hygiene-First Environment",
     "Considered, Unhurried Care",
+    "Skilled Therapists",
   ],
+
+  // Real, verifiable neighbourhoods within easy reach of the Khairatabad
+  // address — used in local-SEO copy (never invented service areas).
+  nearbyAreas: ["Khairatabad", "Somajiguda", "Lakdikapul"],
 
   nav: [
     { label: "Home", href: "/" },

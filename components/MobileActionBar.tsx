@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { buildWhatsAppLink, defaultWhatsAppMessage, siteConfig } from "@/lib/site-config";
-import { PhoneIcon, WhatsAppIcon } from "./CTAButtons";
+import { PhoneIcon, WhatsAppIcon, MapPinIcon } from "./CTAButtons";
 
 export default function MobileActionBar() {
   const [scrolled, setScrolled] = useState(false);
@@ -32,14 +32,14 @@ export default function MobileActionBar() {
         hidden ? "translate-y-full" : "translate-y-0"
       }`}
     >
-      <div className="grid grid-cols-2 items-stretch text-xs uppercase tracking-widest2">
+      <div className="grid grid-cols-3 items-stretch text-xs uppercase tracking-widest2">
         <a
           href={siteConfig.contact.phoneHref}
           className="tap-target flex items-center justify-center gap-2 bg-charcoal py-3 text-ivory active:bg-ink"
         >
           <PhoneIcon className="h-4 w-4 shrink-0" />
           <span className="flex flex-col items-start leading-tight normal-case">
-            <span className="text-[10px] tracking-widest2">Call Now</span>
+            <span className="text-[10px] tracking-widest2">Call</span>
             <span className="text-[11px] tracking-normal opacity-80">
               {siteConfig.contact.phoneDisplay}
             </span>
@@ -49,10 +49,19 @@ export default function MobileActionBar() {
           href={buildWhatsAppLink(defaultWhatsAppMessage)}
           target="_blank"
           rel="noopener noreferrer"
-          className="tap-target flex items-center justify-center gap-2 bg-ivory py-4 text-ink active:bg-cream"
+          className="tap-target flex items-center justify-center gap-1.5 bg-ivory py-4 text-ink active:bg-cream"
         >
-          <WhatsAppIcon className="h-4 w-4" />
+          <WhatsAppIcon className="h-4 w-4 shrink-0" />
           WhatsApp
+        </a>
+        <a
+          href={siteConfig.location.mapsDirectionsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="tap-target flex items-center justify-center gap-1.5 border-l border-line bg-ivory py-4 text-ink active:bg-cream"
+        >
+          <MapPinIcon className="h-4 w-4 shrink-0" />
+          Directions
         </a>
       </div>
     </div>

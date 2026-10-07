@@ -1,11 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import { buildWhatsAppLink, defaultWhatsAppMessage, siteConfig } from "@/lib/site-config";
+import { sendConversion } from "@/lib/google-ads";
 
 // ---------------------------------------------------------------------------
-// The two conversion CTAs used everywhere on the site: Call and WhatsApp.
-// No other button type (e.g. a generic "Book Now") should be used for a
-// conversion action — these two, consistently.
+// The site's conversion CTAs: Call and WhatsApp are the two primary ones,
+// used everywhere, consistently. Directions and Book Appointment are
+// secondary — real destinations (Maps, the /booking page), not a generic
+// "Book Now" placeholder.
 //
 // Call is solid (charcoal, or ivory on a dark background) — a primary,
 // filled button. WhatsApp is an outlined button in the site's own palette;
@@ -46,6 +49,15 @@ export function MapPinIcon({ className = "h-4 w-4" }: { className?: string }) {
         d="M12 21.5c4.5-4.2 7.5-8.1 7.5-11.8a7.5 7.5 0 1 0-15 0c0 3.7 3 7.6 7.5 11.8z"
       />
       <circle cx="12" cy="9.7" r="2.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+export function CalendarIcon({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" className={className}>
+      <rect x="3.5" y="5" width="17" height="15.5" rx="1.5" strokeLinejoin="round" />
+      <path strokeLinecap="round" d="M3.5 9.5h17M8 3v3.5M16 3v3.5" />
     </svg>
   );
 }
@@ -174,6 +186,34 @@ export function DirectionsButton({
       <MapPinIcon className={iconSizeClass[size]} />
       {label}
     </a>
+  );
+}
+
+// Links to the real /booking page (the guided request flow that ends by
+// opening WhatsApp with the filled details) and fires a "booking_click"
+// conversion — a lighter-weight engagement signal, distinct from
+// trackConfirmedBooking()'s genuine, server-confirmed booking conversion,
+// which this never touches.
+export function BookAppointmentButton({
+  label = "Book Appointment",
+  tone = "dark",
+  size = "default",
+  className = "",
+}: {
+  label?: string;
+  tone?: Tone;
+  size?: keyof typeof sizeClass;
+  className?: string;
+}) {
+  return (
+    <Link
+      href="/booking"
+      onClick={() => sendConversion("booking_click")}
+      className={`btn ${directionsToneClass[tone]} ${sizeClass[size]} ${className}`}
+    >
+      <CalendarIcon className={iconSizeClass[size]} />
+      {label}
+    </Link>
   );
 }
 

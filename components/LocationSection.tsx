@@ -27,6 +27,13 @@ export default function LocationSection() {
                 </p>
               </div>
               <div>
+                <p className="eyebrow text-ink/40">Nearby</p>
+                <p className="mt-2 max-w-sm">
+                  Minutes from {siteConfig.nearbyAreas.slice(1).join(" and ")}, and
+                  easily reached from across central Hyderabad.
+                </p>
+              </div>
+              <div>
                 <p className="eyebrow text-ink/40">Phone</p>
                 <p className="mt-2">{siteConfig.contact.phoneDisplay}</p>
               </div>

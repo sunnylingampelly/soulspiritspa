@@ -29,22 +29,24 @@ const body = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "SoulSpirit Spa | Luxury Spa in Khairatabad, Hyderabad",
+    default: "SoulSpirit Spa Khairatabad | Massage Spa Near Somajiguda",
     template: "%s | SoulSpirit Spa",
   },
   description:
-    "SoulSpirit Spa is a refined massage sanctuary in Khairatabad, Hyderabad, offering Thai, Swedish, Balinese, Deep Tissue and more in a calm, private setting. Rest. Reconnect. Renew.",
+    "Visit SoulSpirit Spa in Khairatabad, Hyderabad, near Somajiguda and Lakdikapul. Explore Thai, Swedish, Deep Tissue and other massage therapies. Call or WhatsApp to book.",
   keywords: [
-    "spa in Hyderabad",
+    "spa near me",
     "spa in Khairatabad",
-    "spa near Khairatabad",
-    "massage in Khairatabad Hyderabad",
-    "luxury spa in Hyderabad",
+    "spa Somajiguda",
+    "spa near Lakdikapul",
+    "massage spa near me",
+    "Thai massage near me",
+    "deep tissue massage near me",
+    "full body massage near me",
+    "massage in Khairatabad",
+    "spa in Hyderabad",
     "wellness spa Hyderabad",
-    "massage spa Hyderabad",
-    "premium spa Hyderabad",
     "couples spa Hyderabad",
-    "spa near Taj Enclave Khairatabad",
   ],
   openGraph: {
     title: "SoulSpirit Spa | Luxury Spa in Khairatabad, Hyderabad",
@@ -111,6 +113,12 @@ export default function RootLayout({
       addressCountry: "IN",
     },
     email: siteConfig.contact.email,
+    // Real, nearby neighbourhoods the spa actually serves — not an
+    // invented service radius.
+    areaServed: siteConfig.nearbyAreas.map((area) => ({
+      "@type": "Place",
+      name: area,
+    })),
     ...(siteConfig.location.lat && siteConfig.location.lng
       ? {
           geo: {

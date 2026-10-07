@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import TrustStrip from "@/components/TrustStrip";
 import SignatureTreatments from "@/components/SignatureTreatments";
+import LocalMassageServices from "@/components/LocalMassageServices";
 import BrandIntro from "@/components/BrandIntro";
 import SpecialOffers from "@/components/SpecialOffers";
 import WhySoulSpirit from "@/components/WhySoulSpirit";
@@ -13,7 +14,7 @@ import FinalCTA from "@/components/FinalCTA";
 
 export const metadata: Metadata = {
   description:
-    "A refined escape from the noise of everyday life. Explore the massage menu at SoulSpirit Spa, Hyderabad.",
+    "Visit SoulSpirit Spa in Khairatabad, Hyderabad, near Somajiguda and Lakdikapul. Explore Thai, Swedish, Deep Tissue and other massage therapies. Call or WhatsApp to book.",
   alternates: { canonical: "/" },
 };
 
@@ -23,12 +24,15 @@ export const metadata: Metadata = {
 // pages (/experience, /about, /treatments) instead of being duplicated on
 // the homepage too. SpaceGallery is the exception — real photos of the
 // actual rooms a guest walks into, reusing them here on purpose.
+// LocalMassageServices carries the Khairatabad/Somajiguda/Lakdikapul local
+// SEO content and per-service cards for the Google Ads campaign.
 export default function HomePage() {
   return (
     <>
       <Hero />
       <TrustStrip />
       <SignatureTreatments />
+      <LocalMassageServices />
       <BrandIntro />
       <SpecialOffers />
       <WhySoulSpirit />

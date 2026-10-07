@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import ImagePlaceholder from "./ImagePlaceholder";
 import { siteImages } from "@/lib/images";
 import { buildWhatsAppLink } from "@/lib/site-config";
+import { sendConversion } from "@/lib/google-ads";
 
 const SESSION_KEY = "soulspirit-promo-seen";
 
@@ -47,6 +48,8 @@ export default function PromoPopup() {
     if (!name.trim() || digits.length !== 10) return;
     const message = `Hi SoulSpirit Spa, I'm ${name.trim()} (+91 ${digits}). I'd like to claim the 15% off offer.`;
     window.open(buildWhatsAppLink(message), "_blank", "noopener,noreferrer");
+    sendConversion("contact_form");
+    sendConversion("whatsapp");
     setOpen(false);
   }
 

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import ImagePlaceholder from "./ImagePlaceholder";
 import Parallax from "./Parallax";
-import { CallButton, WhatsAppButton, DirectionsButton } from "./CTAButtons";
+import { CallButton, WhatsAppButton, DirectionsButton, BookAppointmentButton } from "./CTAButtons";
 import { siteImages } from "@/lib/images";
 import { siteConfig } from "@/lib/site-config";
 
@@ -94,11 +94,21 @@ export default function Hero() {
           pass — this section only ever renders under `sm:hidden`.
           ===================================================================== */}
       <div className="container-luxe relative z-10 flex flex-col items-center px-6 pb-9 pt-28 text-center sm:hidden">
+        <motion.div
+          initial={{ y: 12 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-champagne/40 bg-charcoal/40 px-4 py-1.5 text-[11px] uppercase tracking-widest2 text-champagne backdrop-blur-sm"
+        >
+          <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-bronze-light" />
+          15% Off Spa Services
+        </motion.div>
+
         <motion.h1
           initial={{ y: 20 }}
           animate={{ y: 0 }}
-          transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="text-balance text-[clamp(2.125rem,9vw,2.875rem)] font-serif font-medium leading-[1.1] text-ivory"
+          transition={{ duration: 0.9, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-4 text-balance text-[clamp(2.125rem,9vw,2.875rem)] font-serif font-medium leading-[1.1] text-ivory"
         >
           Massage &amp; Wellness Spa in Khairatabad
         </motion.h1>
@@ -109,7 +119,16 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
           className="eyebrow mt-3 text-champagne"
         >
-          SoulSpirit Spa · Khairatabad
+          SoulSpirit Spa in Khairatabad
+        </motion.p>
+
+        <motion.p
+          initial={{ y: 10 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.8, delay: 0.32, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-1.5 text-[11px] uppercase tracking-widest2 text-ivory/60"
+        >
+          Professional Massage Spa Near Somajiguda &amp; Lakdikapul
         </motion.p>
 
         <motion.p
@@ -153,11 +172,20 @@ export default function Hero() {
             label="Book on WhatsApp"
             className="min-h-[72px] w-full justify-center"
           />
-          <DirectionsButton
-            tone="light"
-            size="sm"
-            className="min-h-[52px] w-full justify-center"
-          />
+          <div className="grid grid-cols-2 gap-3">
+            <BookAppointmentButton
+              tone="light"
+              label="Book Appointment"
+              size="sm"
+              className="min-h-[52px] w-full !flex-col !gap-1 !whitespace-normal !px-2 !text-[9px] leading-tight"
+            />
+            <DirectionsButton
+              tone="light"
+              label="Directions"
+              size="sm"
+              className="min-h-[52px] w-full !gap-1.5 !px-2 !text-[10px]"
+            />
+          </div>
         </motion.div>
 
         <motion.div
@@ -186,7 +214,7 @@ export default function Hero() {
           className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-champagne/40 bg-charcoal/40 px-4 py-1.5 text-[11px] uppercase tracking-widest2 text-champagne backdrop-blur-sm"
         >
           <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-bronze-light" />
-          15% Off
+          15% Off Spa Services
         </motion.div>
 
         {/* Specific, keyword-led headline for search/ad relevance — "what
@@ -209,7 +237,16 @@ export default function Hero() {
           transition={{ duration: 0.9, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
           className="eyebrow mt-4 text-champagne"
         >
-          SoulSpirit Spa · Khairatabad, Hyderabad
+          SoulSpirit Spa in Khairatabad, Hyderabad
+        </motion.p>
+
+        <motion.p
+          initial={{ y: 10 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.9, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-1.5 text-xs uppercase tracking-widest2 text-ivory/60"
+        >
+          Professional Massage Spa Near Somajiguda &amp; Lakdikapul
         </motion.p>
 
         <motion.p
@@ -242,6 +279,7 @@ export default function Hero() {
         >
           <CallButton tone="light" />
           <WhatsAppButton tone="light" />
+          <BookAppointmentButton tone="light" size="sm" />
           <DirectionsButton tone="light" size="sm" />
         </motion.div>
 

@@ -12,7 +12,17 @@
 // actual Google *tag* ID, which always looks like "AW-123456789".
 // ---------------------------------------------------------------------------
 
-export type ConversionKind = "phone" | "booking" | "whatsapp" | "directions";
+// "booking" stays reserved for a genuinely *confirmed* booking (see
+// trackConfirmedBooking below) — it must never fire on a click. For the
+// lighter-weight "someone clicked a booking CTA" signal, use
+// "booking_click" instead; it's a distinct conversion action/label.
+export type ConversionKind =
+  | "phone"
+  | "booking"
+  | "whatsapp"
+  | "directions"
+  | "booking_click"
+  | "contact_form";
 
 const GOOGLE_ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID ?? "";
 
@@ -21,6 +31,8 @@ const LABELS: Record<ConversionKind, string> = {
   booking: process.env.NEXT_PUBLIC_GOOGLE_ADS_BOOKING_LABEL ?? "",
   whatsapp: process.env.NEXT_PUBLIC_GOOGLE_ADS_WHATSAPP_LABEL ?? "",
   directions: process.env.NEXT_PUBLIC_GOOGLE_ADS_DIRECTIONS_LABEL ?? "",
+  booking_click: process.env.NEXT_PUBLIC_GOOGLE_ADS_BOOKING_CLICK_LABEL ?? "",
+  contact_form: process.env.NEXT_PUBLIC_GOOGLE_ADS_CONTACT_FORM_LABEL ?? "",
 };
 
 // A real Google tag ID is always "AW-" followed by digits. Anything else

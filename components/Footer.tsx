@@ -75,12 +75,14 @@ export default function Footer() {
             </ul>
           </div>
 
+          {(siteConfig.social.instagram || siteConfig.social.facebook) && (
           <div>
             <p className="eyebrow text-champagne/80">Follow</p>
             <ul className="mt-5 space-y-3 text-sm text-ivory/70">
+              {siteConfig.social.instagram && (
               <li>
                 <a
-                  href={siteConfig.social.instagram || "#"}
+                  href={siteConfig.social.instagram}
                   className="link-underline hover:text-ivory"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -88,9 +90,11 @@ export default function Footer() {
                   Instagram
                 </a>
               </li>
+              )}
+              {siteConfig.social.facebook && (
               <li>
                 <a
-                  href={siteConfig.social.facebook || "#"}
+                  href={siteConfig.social.facebook}
                   className="link-underline hover:text-ivory"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -98,8 +102,10 @@ export default function Footer() {
                   Facebook
                 </a>
               </li>
+              )}
             </ul>
           </div>
+          )}
         </div>
 
         <div className="flex flex-col-reverse items-center justify-between gap-4 pt-8 text-xs text-ivory/40 sm:flex-row">
