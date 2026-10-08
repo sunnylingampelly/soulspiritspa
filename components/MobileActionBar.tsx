@@ -35,15 +35,11 @@ export default function MobileActionBar() {
       <div className="grid grid-cols-3 items-stretch text-xs uppercase tracking-widest2">
         <a
           href={siteConfig.contact.phoneHref}
-          className="tap-target flex items-center justify-center gap-2 bg-charcoal py-3 text-ivory active:bg-ink"
+          aria-label={`Call SoulSpirit Spa at ${siteConfig.contact.phoneDisplay}`}
+          className="tap-target flex items-center justify-center gap-1.5 bg-charcoal py-4 text-ivory active:bg-ink"
         >
           <PhoneIcon className="h-4 w-4 shrink-0" />
-          <span className="flex flex-col items-start leading-tight normal-case">
-            <span className="text-[10px] tracking-widest2">Call</span>
-            <span className="text-[11px] tracking-normal opacity-80">
-              {siteConfig.contact.phoneDisplay}
-            </span>
-          </span>
+          Call
         </a>
         <a
           href={buildWhatsAppLink(defaultWhatsAppMessage)}

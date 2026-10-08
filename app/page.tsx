@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Hero from "@/components/Hero";
 import TrustStrip from "@/components/TrustStrip";
 import SignatureTreatments from "@/components/SignatureTreatments";
-import LocalMassageServices from "@/components/LocalMassageServices";
 import BrandIntro from "@/components/BrandIntro";
 import SpecialOffers from "@/components/SpecialOffers";
 import WhySoulSpirit from "@/components/WhySoulSpirit";
@@ -18,31 +17,37 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-// Kept deliberately lean: services come right after the hero, and the
-// storytelling sections that used to repeat here (the guided journey, the
-// four principles, the single-treatment spotlight) now live on their own
-// pages (/experience, /about, /treatments) instead of being duplicated on
-// the homepage too. SpaceGallery is the exception — real photos of the
-// actual rooms a guest walks into, reusing them here on purpose.
-// LocalMassageServices carries the Khairatabad/Somajiguda/Lakdikapul local
-// SEO content and per-service cards for the Google Ads campaign.
+// Mobile shows only what a visitor is looking for: the hero, treatments,
+// photos of the space and how to get there. Desktop keeps the fuller page —
+// the sections wrapped in DesktopOnly are hidden below the `sm` breakpoint.
+function DesktopOnly({ children }: { children: React.ReactNode }) {
+  return <div className="hidden sm:block">{children}</div>;
+}
+
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <TrustStrip />
+      <DesktopOnly>
+        <TrustStrip />
+      </DesktopOnly>
       <SignatureTreatments />
-      <LocalMassageServices />
-      <BrandIntro />
-      <SpecialOffers />
-      <WhySoulSpirit />
+      <DesktopOnly>
+        <BrandIntro />
+        <SpecialOffers />
+        <WhySoulSpirit />
+      </DesktopOnly>
       <SpaceGallery />
       {/* Testimonials hidden for now, at the client's request, until real
           reviews are available — see components/Testimonials.tsx. */}
-      <MembershipSection />
+      <DesktopOnly>
+        <MembershipSection />
+      </DesktopOnly>
       <LocationSection />
-      <FAQSection />
-      <FinalCTA />
+      <DesktopOnly>
+        <FAQSection />
+        <FinalCTA />
+      </DesktopOnly>
     </>
   );
 }

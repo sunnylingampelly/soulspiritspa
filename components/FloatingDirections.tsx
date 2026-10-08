@@ -9,7 +9,8 @@ import { MapPinIcon } from "./CTAButtons";
 // fixed position the old chat-bot launcher used to sit in (same offsets,
 // same z-index), since that bubble was removed and this is what now goes
 // in its place: a quick, always-reachable way to open Maps from anywhere
-// on the site, on both mobile and desktop.
+// on the site. Desktop/tablet only — on mobile the bottom action bar
+// already has a Directions button.
 export default function FloatingDirections() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
@@ -33,7 +34,7 @@ export default function FloatingDirections() {
 
   return (
     <div
-      className={`fixed bottom-[calc(76px+env(safe-area-inset-bottom))] right-5 z-40 transition-all duration-500 ease-luxe sm:bottom-[150px] sm:right-8 ${
+      className={`fixed bottom-[150px] right-8 z-40 hidden transition-all duration-500 ease-luxe sm:block ${
         hidden ? "pointer-events-none translate-y-4 opacity-0" : "translate-y-0 opacity-100"
       }`}
     >

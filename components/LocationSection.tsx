@@ -26,7 +26,7 @@ export default function LocationSection() {
                   {siteConfig.location.region} {siteConfig.location.postalCode}
                 </p>
               </div>
-              <div>
+              <div className="hidden sm:block">
                 <p className="eyebrow text-ink/40">Nearby</p>
                 <p className="mt-2 max-w-sm">
                   Minutes from {siteConfig.nearbyAreas.slice(1).join(" and ")}, and
@@ -37,7 +37,7 @@ export default function LocationSection() {
                 <p className="eyebrow text-ink/40">Phone</p>
                 <p className="mt-2">{siteConfig.contact.phoneDisplay}</p>
               </div>
-              <div>
+              <div className="hidden sm:block">
                 <p className="eyebrow text-ink/40">WhatsApp</p>
                 <p className="mt-2">{siteConfig.contact.phoneDisplay}</p>
               </div>

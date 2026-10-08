@@ -18,29 +18,32 @@ const images = [
   { label: "A treatment table, set and waiting", tone: "charcoal" as const, src: siteImages.spaceTreatmentMood },
 ];
 
+// Swipeable row on mobile (eight tall photos stacked would be a very long
+// scroll); a plain grid from tablet up.
 export default function SpaceGallery() {
   return (
     <section className="section-pad bg-ivory">
       <div className="container-luxe">
+        {/* Short heading on mobile; the original eyebrow + heading on desktop. */}
         <Reveal>
-          <p className="eyebrow">Take a Look Inside</p>
+          <h2 className="text-display-md font-serif sm:hidden">Inside the Spa</h2>
+          <p className="eyebrow hidden sm:block">Take a Look Inside</p>
         </Reveal>
         <Reveal delay={0.08}>
-          <h2 className="mt-5 max-w-xl text-display-md font-serif text-balance">
+          <h2 className="mt-5 hidden max-w-xl text-display-md font-serif text-balance sm:block">
             The space you&rsquo;ll actually walk into.
           </h2>
         </Reveal>
 
-        <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="-mx-gutter mt-8 flex snap-x snap-mandatory gap-3 overflow-x-auto px-gutter pb-2 [scrollbar-width:none] sm:mx-0 sm:mt-16 sm:grid sm:grid-cols-2 sm:gap-4 sm:overflow-visible sm:px-0 lg:grid-cols-4 [&::-webkit-scrollbar]:hidden">
           {images.map((img, i) => (
-            <Reveal key={i} delay={i * 0.05} direction={i % 2 === 0 ? "left" : "right"}>
-              <ImagePlaceholder
-                label={img.label}
-                tone={img.tone}
-                src={img.src}
-                className="group aspect-[3/4] w-full overflow-hidden"
-              />
-            </Reveal>
+            <ImagePlaceholder
+              key={i}
+              label={img.label}
+              tone={img.tone}
+              src={img.src}
+              className="aspect-[3/4] w-[70vw] shrink-0 snap-start overflow-hidden sm:w-full"
+            />
           ))}
         </div>
       </div>
