@@ -3,9 +3,9 @@
 import { motion } from "framer-motion";
 import ImagePlaceholder from "./ImagePlaceholder";
 import Parallax from "./Parallax";
-import { CallButton, WhatsAppButton, DirectionsButton } from "./CTAButtons";
+import { CallButton, WhatsAppButton, DirectionsButton, PhoneIcon, WhatsAppIcon } from "./CTAButtons";
 import { siteImages } from "@/lib/images";
-import { siteConfig } from "@/lib/site-config";
+import { buildWhatsAppLink, siteConfig } from "@/lib/site-config";
 
 // The mobile hero video is commented out (not deleted) below, at the
 // client's request — a still image is used instead for now. To bring the
@@ -28,9 +28,9 @@ export default function Hero() {
         {/* Mobile only: a still image (the looping video is commented out
             above/below, not deleted, in case it comes back later). */}
         <ImagePlaceholder
-          label="Two therapists greeting guests with a wai"
+          label="A SoulSpirit treatment room, set and softly lit"
           tone="charcoal"
-          src={siteImages.mobileHeroGreeting}
+          src={siteImages.mobileHeroRoom}
           priority
           className="absolute inset-0 h-full w-full sm:hidden"
         />
@@ -71,19 +71,10 @@ export default function Hero() {
             gradient above, so the floating nav stays legible no matter how
             bright the top of whichever hero image/video is in place. */}
         <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-charcoal/55 to-transparent sm:h-48" />
-        {/* Stronger, bottom-weighted wash on mobile — the greeting photo is
-            bright and busy (two faces, patterned wall art) right where the
-            headline sits, so it needs more contrast than a flat tint gives.
-            A warm near-black (the site's own "ink" tone) rather than flat
-            charcoal, graduated so the top of the photo — faces, the room —
-            stays visible instead of going fully dark. */}
-        <div
-          className="absolute inset-0 sm:hidden"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(27,24,20,0.40) 0%, rgba(27,24,20,0.56) 45%, rgba(27,24,20,0.82) 100%)",
-          }}
-        />
+        {/* Flat black layer over the mobile hero photo — the room shot is
+            bright and warm throughout, so the headline and buttons need an
+            even tint on top of the bottom-up gradient above. */}
+        <div className="absolute inset-0 bg-black/50 sm:hidden" />
       </div>
 
       {/* =====================================================================
@@ -125,8 +116,39 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           className="mt-8 flex w-full flex-col gap-3"
         >
-          <CallButton tone="light" className="w-full justify-center" />
-          <WhatsAppButton tone="light" className="w-full justify-center" />
+          {/* Offer-led versions of Call / WhatsApp, mobile hero only. */}
+          <a
+            href={siteConfig.contact.phoneHref}
+            className="flex w-full items-center gap-4 bg-ivory px-5 py-4 text-left text-ink transition-transform active:scale-[0.97]"
+          >
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-charcoal text-ivory">
+              <PhoneIcon className="h-5 w-5" />
+            </span>
+            <span className="flex flex-col leading-tight">
+              <span className="text-[15px] font-semibold">
+                Claim a 20-Min Complimentary Service
+              </span>
+              <span className="mt-1 text-xs text-ink/60">
+                Call {siteConfig.contact.phoneDisplay}
+              </span>
+            </span>
+          </a>
+          <a
+            href={buildWhatsAppLink(
+              "Hi SoulSpirit Spa, I'd like to book and claim the 15% flat off."
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex w-full items-center gap-4 border border-ivory/40 bg-charcoal/40 px-5 py-4 text-left text-ivory backdrop-blur-sm transition-transform active:scale-[0.97]"
+          >
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white">
+              <WhatsAppIcon className="h-5 w-5 [&_path]:fill-white" />
+            </span>
+            <span className="flex flex-col leading-tight">
+              <span className="text-[15px] font-semibold">Get 15% Flat Off</span>
+              <span className="mt-1 text-xs text-ivory/70">Book on WhatsApp</span>
+            </span>
+          </a>
         </motion.div>
 
         <motion.p

@@ -28,6 +28,10 @@ export const siteImages = {
   // mobile hero background (replacing the looping video).
   mobileHeroGreeting: "/mobile-hero-greeting.webp",
 
+  // A real SoulSpirit treatment room, portrait — the current mobile hero
+  // background.
+  mobileHeroRoom: "/mobile-hero-room.webp",
+
   footReflexology: "/gallery/gallery-01.png",
   ritualFlatlay: "/gallery/gallery-02.png",
   footMassageTherapist: "/gallery/gallery-03.png",
@@ -39,19 +43,19 @@ export const siteImages = {
   facialCandle: "/gallery/gallery-09.jpg",
   backMassageFlower: "/gallery/gallery-10.jpg",
 
-  // Treatment-specific shots, one per service on the menu, supplied
-  // directly by the client — used on the treatment cards and detail
-  // pages instead of the generic gallery rotation below.
-  thaiMassage: "/thai-dry.webp",
-  aromatherapyMassage: "/aroma.webp",
-  swedishMassage: "/swedish.webp",
-  balineseMassage: "/balinese.webp",
-  deepTissueMassage: "/deep-tissue.webp",
-  yantraMassage: "/tantra.webp",
-  candleMassage: "/candle.webp",
-  lomiLomiMassage: "/loma-lomi.webp",
-  hotStoneTherapy: "/stone.webp",
-  coupleMassage: "/couple.webp",
+  // Treatment-specific shots, one per service on the menu, from
+  // public/services/ — used on the treatment cards and detail pages
+  // instead of the generic gallery rotation below.
+  thaiMassage: "/services/thai-dry.jpg",
+  aromatherapyMassage: "/services/aroma.jpg",
+  swedishMassage: "/services/swedish.jpg",
+  balineseMassage: "/services/Balinese-Massage.jpg",
+  deepTissueMassage: "/services/deep-tissue.jpg",
+  yantraMassage: "/services/yantra.jpg",
+  candleMassage: "/services/candle-massage.webp",
+  lomiLomiMassage: "/services/Lomi-Lomi.jpg",
+  hotStoneTherapy: "/services/hot-stone-theraphy.jpg",
+  coupleMassage: "/services/couple-massage.jpg",
 
   // The real treatment rooms and lounge at SoulSpirit, from
   // public/gallery-space/ — used by components/SpaceGallery.tsx on the
