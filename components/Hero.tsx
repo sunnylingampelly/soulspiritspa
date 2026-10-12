@@ -114,22 +114,19 @@ export default function Hero() {
           initial={{ y: 14 }}
           animate={{ y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-8 flex w-full flex-col gap-3"
+          className="mt-7 flex w-full flex-col gap-2.5"
         >
           {/* Offer-led versions of Call / WhatsApp, mobile hero only. */}
           <a
             href={siteConfig.contact.phoneHref}
-            className="flex w-full items-center gap-4 bg-ivory px-5 py-4 text-left text-ink transition-transform active:scale-[0.97]"
+            aria-label={`Book a 20-minute free service — call ${siteConfig.contact.phoneDisplay}`}
+            className="flex w-full items-center justify-center gap-2.5 bg-ivory min-h-[56px] px-5 py-2 text-ink transition-transform active:scale-[0.97]"
           >
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-charcoal text-ivory">
-              <PhoneIcon className="h-5 w-5" />
-            </span>
-            <span className="flex flex-col leading-tight">
-              <span className="text-[15px] font-semibold">
-                Claim a 20-Min Complimentary Service
-              </span>
-              <span className="mt-1 text-xs text-ink/60">
-                Call {siteConfig.contact.phoneDisplay}
+            <PhoneIcon className="h-4 w-4 shrink-0" />
+            <span className="flex flex-col items-start leading-tight">
+              <span className="text-sm font-semibold">Book 20-Min Free Service</span>
+              <span className="mt-0.5 text-[11px] text-ink/60">
+                {siteConfig.contact.phoneDisplay}
               </span>
             </span>
           </a>
@@ -139,15 +136,10 @@ export default function Hero() {
             )}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex w-full items-center gap-4 border border-ivory/40 bg-charcoal/40 px-5 py-4 text-left text-ivory backdrop-blur-sm transition-transform active:scale-[0.97]"
+            className="flex w-full items-center justify-center gap-2.5 border border-ivory/40 min-h-[56px] px-5 py-2 text-sm font-semibold text-ivory transition-transform active:scale-[0.97]"
           >
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#25D366] text-white">
-              <WhatsAppIcon className="h-5 w-5 [&_path]:fill-white" />
-            </span>
-            <span className="flex flex-col leading-tight">
-              <span className="text-[15px] font-semibold">Get 15% Flat Off</span>
-              <span className="mt-1 text-xs text-ivory/70">Book on WhatsApp</span>
-            </span>
+            <WhatsAppIcon className="h-4 w-4" />
+            Get 15% Off on WhatsApp
           </a>
         </motion.div>
 
